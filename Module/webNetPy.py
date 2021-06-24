@@ -3,477 +3,444 @@ from selenium.common.exceptions import *
 from selenium.webdriver.support.ui import WebDriverWait as esperar
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
-import XlsPy as xp
-from TxtPy import txtCreateListSinCad
+from PyFile import manageDataSettings as mds
 import time,os
-
-conjuntoErros={'ErrCarregarDado':49,'ErrAbrirNav':50,'ErrObjNaoLocal':51,'ErrBaseVazia':52,'ErrExecJavaScript':53,'ErrMidia':54}
-dictOpcoesNavegador={'1':'chrome','2':'firefox','3':'edge','4':'explorer'}
-
-class kmtCadastro:
-    nomeItem=''
-    descricao=''
-    matServ=''
-    unMed=''
-    grupo=''
-    subGrupo=''
-    urgente=True
-    modalidade=''
-    MidiaPaths=[]
-    codSol=''
- 
-    def Preenche(self,nome,descricaoItem,MaterialOuServico,unidadeMedida,GrupoItem,SubGrupoItem,ItemEUrgente,modalidadeItem,midias,pcodSol=''):
-        self.nomeItem=nome
-        self.descricao=descricaoItem
-        self.matServ=MaterialOuServico
-        self.unMed=unidadeMedida
-        self.grupo=GrupoItem
-        self.subGrupo=SubGrupoItem        
-        self.urgente=ItemEUrgente
-        self.modalidade=modalidadeItem
-        self.MidiaPaths=midias
-        self.codSol=pcodSol
-
-    def Show(self):
-        print(self.nomeItem+';'+self.descricao)
+from PyDefines import *
 
 
-class __wpNavegarWeb__: 
-    def __init__(self,strTipoNavegador='1',modoDeNavegacaoOculto=False): 
-        self.__url__=''
-        self.hwnd=0
-        self.navegador=None
-        self.__modoOculto__=modoDeNavegacaoOculto
-        self.__lstOpcaoNavegador__={'chrome':wd.ChromeOptions(),
-                                    'mozila':wd.FirefoxOptions(),
-                                    'edge':0,
-                                    'explorer':wd.IeOptions()}
-
-        self.tipoNavegador=dictOpcoesNavegador[strTipoNavegador]
-        self.opcaoNavegador=self.__lstOpcaoNavegador__[self.tipoNavegador]
-        self.opcaoNavegador.headless=modoDeNavegacaoOculto     
-        
-        
+class __webBrowsing__: 
+    def __init__(self,browserType=BROWSER_CHROME,hiddenMode=BROWSER_SHOW_HIDED,urlWeb=STRNULL): 
+        self.__url__=urlWeb
+        self.hwnd=ZERO
+        self.browser=self.__setBrowserChosen__(browserType,hiddenMode)         
 
     def setUrl(self,urlWeb):
         self.__url__=urlWeb
 
     def getCurrentUrl(self):
-        return str(self.navegador.current_url)
+        return str(self.browser.current_url)
 
-    def __returnNavegateChosen__(self,navegateCod,configOptions):
-        if navegateCod=='4':
-            return wd.Ie(ie_options=configOptions)
-        elif navegateCod=='3':
-            return wd.Edge()
-        elif navegateCod=='2':
-            return wd.Firefox(firefox_options=configOptions)
+    def __switchWebTab__(self,lstPartialUrl=LSTNULL,newHwnd=NULL,attempts=3):
+        if newHwnd!=NULL:
+            self.browser.switch_to.window(newHwnd)
+            return TRUE,ERR_NO_ERRO,STRNULL
+
+        for eachAttempt in range(attempts):
+            for eachHWND in self.browser.window_handles:
+                self.browser.switch_to.window(eachHWND)
+                currentUrl=str(self.getCurrentUrl()).upper()
+                if currentUrl.find(str(lstPartialUrl[0]).upper())!=LOST and currentUrl.find(str(lstPartialUrl[1]).upper())!=LOST:
+                    self.browser.switch_to.window(eachHWND)
+                    return TRUE,ERR_NO_ERRO,STRNULL    
+                
+        self.browser.switch_to.window(self.hwnd)
+        return FALSE,ERR_TAB_URL_INVALID,STRNULL
+
+    def __setBrowserChosen__(self,BrowserType=BROWSER_CHROME,hiddenMode=BROWSER_SHOW_RISED):
+        if BrowserType==BROWSER_EXPLORER:
+            browserOption=wd.IeOptions()
+            return wd.Ie(ie_options=browserOption,executable_path=PATH_EXPLORER_EXE)
+        elif BrowserType==BROWSER_EDGE:
+            return wd.Edge(executable_path=PATH_EDGE_EXE)
+        elif BrowserType==BROWSER_MOZILA:
+            browserOption=wd.FirefoxOptions()
+            browserOption.headless=hiddenMode
+            return wd.Firefox(options=browserOption,executable_path=PATH_MOZILA_EXE)
         else:
-            return wd.Chrome(chrome_options=configOptions)
+            browserOption=wd.ChromeOptions()
+            browserOption.headless=hiddenMode
+            return wd.Chrome(options=browserOption,executable_path=PATH_CHROME_EXE)
 
-    def __changeNavegatorParams__(self,tipoDeNavegador='1',modoNavegacaoOculto=False):
-        self.__modoOculto__=modoNavegacaoOculto
-        self.tipoNavegador=dictOpcoesNavegador[tipoDeNavegador]
-        self.opcaoNavegador=self.__lstOpcaoNavegador__[self.tipoNavegador]
-        self.opcaoNavegador.headless=self.__modoOculto__
-        self.navegador=self.__returnNavegateChosen__(tipoDeNavegador,self.opcaoNavegador)      
- 
+    def closeBrowser(self):
+        time.sleep(0.5)
+        self.browser.quit()
 
-    def closeNavegator(self):
-        self.navegador.quit()
+    def __getStandardScriptText__(self,elementCode,elementPropertieValue=STRNULL,elementDirective=BY_ID,elementAction=ELEMENT_CLICK):
+        stdText="document.{directive}('{code}').{action}"
+        eAction=elementAction
+        if elementAction!=ELEMENT_CLICK:
+            eAction=str(elementAction).format(valor=elementPropertieValue)
+        stdText=stdText.format(directive=elementDirective,code=elementCode,action=eAction)
+        return stdText
 
-    def __aguardarAcaoNavegador__(self,tipoComponente,codigoComponente):
-        tentativa=1
-        while True:
+    def waitBrowserAction(self,elementPropertType,elementCode,timeWaiting=5,attempts=3):
+        attempt=1
+        while TRUE:
             try:
-                TempoEspera=esperar(self.navegador,5).until(EC.presence_of_element_located((tipoComponente,codigoComponente)))
-                return True,'Sem Erro',0
-            except WebDriverException as wdErro:
-                if tentativa>3:
-                    self.closeNavegator()
-                    return False,wdErro.args[0],conjuntoErros.pop('ErrObjNaoLocal')
-                tentativa+=1
-    
-    def __executarJavaScript__(self,scriptText):
-        tentativa=1
-        while True:
+                waitingTime=esperar(self.browser,timeWaiting).until(EC.presence_of_element_located((elementPropertType,elementCode)))
+                return TRUE,ERR_NO_ERRO,STRNULL,waitingTime
+            except WebDriverException as msgErr:
+                if attempt>attempts:
+                    self.closeBrowser()
+                    return FALSE,ERR_ELEMENT_NOT_EXIST,msgErr.args[0],NULL
+                attempt+=1
+
+    def runScript(self,scriptText,attempts=3):
+        attempt=1
+        while TRUE:
             try:
-                self.navegador.execute_script(scriptText)
-                return True,'Sem Erro',0
-            except WebDriverException as erro:
-                if tentativa>3:
-                    self.closeNavegator()
-                    return False,erro.args[0],conjuntoErros.pop('ErrExecJavaScript')
-                tentativa+=1
+                webReturn=self.browser.execute_script(scriptText)
+                return TRUE,ERR_NO_ERRO,STRNULL,webReturn
+            except WebDriverException as msgErr:
+                if attempt>attempts:
+                    self.closeBrowser()
+                    return FALSE,ERR_ELEMENT_NOT_EXIST,msgErr.args[0],NULL
+                attempt+=1
 
+    def waitSeveralActionsToClick(self,elementsProperties,elementsCodes,timeWating=5,attempts=3):
+        position=0
+        while position<len(elementsProperties):
+            response=self.waitBrowserAction(elementsProperties[position],elementsCodes[position],timeWaiting=timeWating,attempts=attempts)
+            if response[0]==FALSE:
+                return response[0:3]
+            time.sleep(0.5)
+            response[3].click()
+            position+=1
+        return TRUE,ERR_NO_ERRO,STRNULL
 
-    def __localizarWebElemento__(self,tipoComponente,codigoComponente):
-        tentativa=1
-        while True:
+    def runSeveralScripts(self,scriptsList,attempts=3):
+        for eachScript in scriptsList:
+            response=self.runScript(eachScript,attempts)
+            if response[0]==False:
+                return response
+            time.sleep(0.1)
+        return response
+
+    def getWebElement(self,elementPropertType,elementCode,attempts=3):
+        attempt=1
+        while TRUE:
             try:
-                webElemento=self.navegador.find_element(tipoComponente,codigoComponente)              
-                return True,'Sem Erro',0,webElemento
-            except NoSuchElementException as wdErro:
-                if tentativa>3:
-                    self.navegador.quit()
-                    return False,wdErro.args[0],conjuntoErros.pop('ErrObjNaoLocal'),None
-                tentativa+=1
+                webElement=self.browser.find_element(elementPropertType,elementCode)    
+                return TRUE,ERR_NO_ERRO,STRNULL,webElement
+            except NoSuchElementException as msgErr:
+                if attempt>attempts:
+                    self.closeBrowser()
+                    return FALSE,ERR_ELEMENT_NOT_EXIST,msgErr.args[0],NULL
+                attempt+=1
 
+    def goToWebPage(self,url=STRNULL,attempts=3):
+        if url==STRNULL:
+            url=self.__url__
+        self.setUrl(url)
+        attempt=1
+        try:
+            self.browser.get(url)
+            self.hwnd=self.browser.current_window_handle.__str__()     
+            return TRUE,ERR_NO_ERRO,STRNULL
+        except Exception as msgErr:
+            if attempt>attempts:
+                return FALSE,ERR_WEB_PAGE_ERRO,msgErr.args[0]
+            attempt+=1
+        return TRUE,ERR_NO_ERRO,STRNULL
 
+class kmtBrowsing(__webBrowsing__):
 
-    def navegateOnWeb(self,urlWeb,modoNavegacaoOculto=False,tipoDeNavegador='1'):
-        self.setUrl(urlWeb)
-        self.__changeNavegatorParams__(tipoDeNavegador,modoNavegacaoOculto)
-        self.hwnd=self.navegador.current_window_handle
+    def __init__(self,recordset=LSTNULL,browserType=BROWSER_CHROME, hiddenMode=BROWSER_SHOW_HIDED, urlWeb=STRNULL):
+        self.recordset=recordset
+        url=mds(PATH_SETTINGS)
+        super().__init__(browserType=browserType, hiddenMode=hiddenMode, urlWeb=url.getUrl())
+        
+    def goToKmtHomePage(self,user,password):
+        response=self.goToWebPage(self.__url__)
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
+        
+        response=self.waitBrowserAction(By.ID,'txtUsuario')
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
+        response[3].send_keys(user)
+
+        scriptsToRun=[
+                      self.__getStandardScriptText__('txtSenha',elementPropertieValue=password,elementAction=ELEMENT_SET_VALUE),
+                      self.__getStandardScriptText__('cmdEntrar')
+                     ]
+        response=self.runSeveralScripts(scriptsToRun)
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
 
         try:
-            self.navegador.get(urlWeb)
-            return True,'Sem Erros', 0
+            elementVerify=self.browser.find_element_by_id('LabelResult')
+            self.closeBrowser()
+            return FALSE,ERR_USER_PASSAWORD_ERRO,STRNULL
+        except Exception as msgErr:
+            return response
 
-        except Exception as erroNav:
-            self.navegador.quit()
-            return False, erroNav.args[0], conjuntoErros.pop('ErrAbrirNav') 
+    def __setNameDescriptionOnPageKmt__(self,dctData):
+        response=self.waitSeveralActionsToClick([By.PARTIAL_LINK_TEXT,By.ID],['Solicitar um Item Novo','butNotFoundItem'])
+        if response[0]==FALSE:
+            return response
 
+        response=self.waitBrowserAction(By.ID,'txtNome')
+        if response[0]==FALSE:
+            return response[0:3]
+        scripts=[
+                    self.__getStandardScriptText__('txtNome',dctData[FIELDS_RECORDS[0]],BY_ID,ELEMENT_SET_VALUE),
+                    self.__getStandardScriptText__('txtDescricao',dctData[FIELDS_RECORDS[1]],BY_ID,ELEMENT_SET_VALUE),    
+                    self.__getStandardScriptText__('butContinuar')
+                ]
 
-    def __TrocarAbaNavegacao__(self,partialUrl=[],newHwnd=None):
+        response=self.runSeveralScripts(scripts)
+        return response
 
-        if newHwnd!=None:
-            self.navegador.switch_to.window(newHwnd)
-            return
+    def __setUrgentTypeMeasurementOnPageKmt__(self,dctData):
 
-        self.__originalHWND__=self.hwnd
+        response=self.waitBrowserAction(By.ID,'txtTipo')
+        if response[0]==FALSE:
+            return response[0:3]
+        
+        response[3].send_keys(dctData[FIELDS_RECORDS[2]])
+        scripts=self.__getStandardScriptText__('txtUnidadeMedida',dctData[FIELDS_RECORDS[3]],BY_ID,ELEMENT_SET_VALUE)
+        response=self.runScript(scripts)
+        if response[0]==FALSE:
+            return response
 
-        tentativa=1
-        while tentativa<=3:
-            for eachHwnd in self.navegador.window_handles:
-                self.navegador.switch_to.window(eachHwnd)
-                if str(str(self.navegador.current_url).upper()).find(str(partialUrl[0]).upper())>-1 and str(str(self.navegador.current_url).upper()).find(str(partialUrl[1]).upper())>-1:
-                    self.hwnd=eachHwnd                    
-                    tentativa=4
-                    break
-                else:
-                    self.navegador.switch_to.window(self.__originalHWND__)
-            tentativa+=1
+        if dctData[FIELDS_RECORDS[6]]==TRUE:
+            scripts=["__doPostBack('ctl00$Body$dlPrioridade$ctl02$LinkButton2','')"]
+        else:
+            scripts=["__doPostBack('ctl00$Body$dlPrioridade$ctl01$LinkButton2','')"]
+
+        scripts.append("__doPostBack('ctl00$Body$dlTab$ctl02$lbutMenu','')")
+
+        response=self.runSeveralScripts(scripts)
+  
+        return response
+
+    def __setGroupSubgroupUse__(self,dctData):
+        response=self.waitBrowserAction(By.ID,'ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl04_txtCat')
+        if response[0]==FALSE:
+            return response
+
+        scripts=[
+                  self.__getStandardScriptText__('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl04_txtCat',dctData[FIELDS_RECORDS[7]],BY_ID,ELEMENT_SET_VALUE),
+                  self.__getStandardScriptText__('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl02_txtCat',dctData[FIELDS_RECORDS[4]],BY_ID,ELEMENT_SET_VALUE),
+                  self.__getStandardScriptText__('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl03_txtCat',dctData[FIELDS_RECORDS[5]],BY_ID,ELEMENT_SET_VALUE)
+                ]
+
+        response=self.runSeveralScripts(scripts)
+        if response[0]==FALSE:
+            return response
+
+        response=self.waitSeveralActionsToClick([By.PARTIAL_LINK_TEXT],['Mídias'])
+        return response
+
+    def __setMidias__(self,dctData):
+        response=self.__switchWebTab__(['login.klassmatt.com.br','Midia.aspx?'])
+        if response[0]==FALSE:
+            return response
+        
+        for eachPath in dctData[FIELDS_RECORDS[8]].split(';'):
+            response=self.runScript("this.mostraAba('aba-caminho')")
+            if response[0]==FALSE:
+                return response
+
+            response=self.getWebElement(By.ID,'file')
+            if response[0]==FALSE:
+                return response
             
-
-class navegadorKmt(__wpNavegarWeb__):
-    def __init__(self, caminhoArquivoCadastro,abaPlanilhaCadastro,strTipoNavegador='1', modoDeNavegacaoOculto=False):
-        self.__pathRegisterFile__=caminhoArquivoCadastro
-        self.__worksheetTab__=abaPlanilhaCadastro
-        super().__init__(strTipoNavegador=strTipoNavegador, modoDeNavegacaoOculto=modoDeNavegacaoOculto)        
-    
-    def __obterDadosCadastro__(self):
-        tentativa=1
-        while tentativa<=3:
             try:
-                dados2Cadastro,quantidadeRegistros,quantidadeAnexosPorRegistro=xp.xlGeraVetClass(self.__pathRegisterFile__,self.__worksheetTab__)
-                return True,'Sem Erro',0,dados2Cadastro,quantidadeRegistros,quantidadeAnexosPorRegistro
-            except Exception as erro:
-                return False, erro.args[0],conjuntoErros.pop('ErrCarregarDado'),None,0,None
-            else:
-                if dados2Cadastro[0] in [100,101,102,103]:
-                    return False,dados2Cadastro[1],dados2Cadastro[0],None,0,None
-            tentativa+=1
-        return False, 'Erro Não Localizado',1,None,0,None
+                response[3].send_keys(eachPath)
+            except Exception as msgErr:
+                return FALSE,ERR_PATH_NOT_FOUND,msgErr.args[0]
 
-    def __singInSiteKmt__(self,loginKmt,senhaKmt):
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'txtUsuario')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
+            response=self.waitSeveralActionsToClick(2*[By.ID],['cmdSalvar','Linkbutton1'])
+            if response==FALSE:
+                return response
 
-        funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('txtUsuario').value='"+str(loginKmt).strip()+"'")
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
+        response=self.runScript('this.window.close()')
+        if response[0]==FALSE:
+            return response
+        response=self.__switchWebTab__(newHwnd=self.hwnd)
+        return response
 
-        funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('txtSenha').value='"+str(senhaKmt).strip()+"'")
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
+    def __setFinalInforms__(self):
+        response=self.waitSeveralActionsToClick(2*[By.ID],['butAcao2','butContinuar'])
+        if response[0]==FALSE:
+            return response
 
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,'cmdEntrar')
-        if funcionou==False:
-            self.closeNavegator()
-        else:
-            webElemento.click()            
-        return funcionou,msgErro,codErro
+        response=self.getWebElement(By.ID,'label_numeroSin')
+        if response[0]==FALSE:
+            return response
+        idSin=str(response[3].text)[-5:]
 
-    def __registerMidiaKmt__(self,dadoSin,qtdAnexosSin):
+        response=self.waitSeveralActionsToClick([By.ID],['butNao'])
+        if response[0]==FALSE:
+            return response
 
-        self.__TrocarAbaNavegacao__(['login.klassmatt.com.br','Midia.aspx?']) 
+        response=self.runScript("this.__doPostBack('ctl00$Body$TopMenu1$dlmenu$ctl00$lbutopcao','')")
+        if response[0]==FALSE:
+            return response
 
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'cmdSalvar')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
-        time.sleep(0.5)
+        return True,ERR_NO_ERRO,STRNULL,idSin
+ 
+    def __loopRecord__(self,lstData):
+        self.__sins__=[]
+        node=0
+        while node<len(lstData):
+            dctData=lstData[node]         
+            response=self.__setNameDescriptionOnPageKmt__(dctData)
+            if response[0]==FALSE:
+                return response
 
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.PARTIAL_LINK_TEXT,'Arquivo')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
-        webElemento.click()
-        time.sleep(0.5)
+            response=self.__setUrgentTypeMeasurementOnPageKmt__(dctData)
+            if response[0]==FALSE:
+                return response
 
-        if qtdAnexosSin>1:
-            midiasDoSin=dadoSin.MidiaPaths
-        else:
-            midiasDoSin=[dadoSin.MidiaPaths]          
+            response=self.__setGroupSubgroupUse__(dctData)
+            if response[0]==FALSE:
+                return response
 
-        for eachElement in range(qtdAnexosSin):
-            funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'file')
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro
+            response=self.__setMidias__(dctData)
+            if response[0]==FALSE:
+                return response
 
-            funcionou,msgErro,codErro, webElemento=self.__localizarWebElemento__(By.ID,'file')
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,'Problemas com a midia indicada.',conjuntoErros.pop('ErrMidia')
-            webElemento.send_keys(os.path.abspath(str(midiasDoSin[eachElement]).strip()))
+            response=self.__setFinalInforms__()
+            if response[0]==FALSE:
+                return response
 
-            funcionou,msgErro,codErro, webElemento=self.__localizarWebElemento__(By.ID,'cmdSalvar')
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro
-            time.sleep(1)
-            webElemento.click()
+            self.__sins__.append({'CODIGO':dctData['codigo'],'SIN':response[3],'DESCRICAO':dctData['descricao']})
+            node+=1
 
-            if qtdAnexosSin>1:
-                funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'Linkbutton1')
-                if funcionou==False:
-                    self.closeNavegator()
-                    return funcionou,msgErro,codErro
+        return TRUE,ERR_NO_ERRO,STRNULL
 
-                funcionou,msgErro,codErro, webElemento=self.__localizarWebElemento__(By.ID,'Linkbutton1')
-                if funcionou==False:
-                    self.closeNavegator()
-                    return funcionou,msgErro,codErro
-                webElemento.click()
-                time.sleep(1)
+    def __recordItensKmt__(self,data,user,password):
+        response=self.goToKmtHomePage(user,password)
+        if response[0]==FALSE:
+            return response       
 
+        response=self.__loopRecord__(data)
+        if response[0]==FALSE:
+            return response
+
+    def recordOnKlassmatt(self,user,password):
+        try:
+            response=self.__recordItensKmt__(self.recordset,user,password)
+            if response[0]==FALSE:
+                self.closeBrowser()
+            return response[0:3]
+        except Exception as msgErr:
+            return False,ERR_UNKNOWN_ERROR,msgErr
+
+class kmtCheckSins(__webBrowsing__):
+
+    def __init__(self,sins=LSTNULL,browserType=BROWSER_CHROME, hiddenMode=BROWSER_SHOW_HIDED):
+        self.sins=sins
+        manage=mds(PATH_SETTINGS)
+        self.__login__=manage.__getLogin__()
+        super().__init__(browserType=browserType, hiddenMode=hiddenMode, urlWeb=manage.getUrl())
+
+    def goToKmtHomePage(self):
+        user=self.__login__[0]
+        password=self.__login__[1]
+        response=self.goToWebPage(self.__url__)
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
         
+        response=self.waitBrowserAction(By.ID,'txtUsuario')
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
+        response[3].send_keys(user)
 
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'Label1')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
+        scriptsToRun=[
+                      self.__getStandardScriptText__('txtSenha',elementPropertieValue=password,elementAction=ELEMENT_SET_VALUE),
+                      self.__getStandardScriptText__('cmdEntrar')
+                     ]
+        response=self.runSeveralScripts(scriptsToRun)
+        if response[0]==FALSE:
+            self.closeBrowser()
+            return response
 
-        funcionou,msgErro,codErro, webElemento=self.__localizarWebElemento__(By.ID,'cmdFechar')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro
-        webElemento.click()
-        time.sleep(0.8)
+        try:
+            elementVerify=self.browser.find_element_by_id('LabelResult')
+            self.closeBrowser()
+            return FALSE,ERR_USER_PASSAWORD_ERRO,STRNULL
+        except Exception as msgErr:
+            return response
 
-        self.__TrocarAbaNavegacao__(self.__originalHWND__)
+    def goToKmtFollowSins(self):
+        self.runScript("__doPostBack('ctl00$Body$rptSolicitacaoItemNovo$ctl01$lkbutMenu','')")
+        try:
+            response=self.__loop__()
+        except Exception as msgErr:
+            return FALSE,ERR_NOT_UPDATED,msgErr
 
-        return True,'Sem Erro',0
+        if response[0]==FALSE:
+            return response
+     
+    def getCodeControl(self,text):
+        if text.find('APROVAD')>EOF:
+            return 0
+        elif text.find('CANCEL')>EOF:
+            return 1
+        else:
+            return 2
 
-    def __registerSinsInKmt__(self,dadoSin,qtdAnexosSin):
+    def webScraping(self,sinInfo):
+        dataDct=sinInfo
 
-        conjByTipo=[By.CLASS_NAME,By.PARTIAL_LINK_TEXT,By.ID,By.ID]
-        conjTextElement=['ks-box-item-title','Solicitar um Item Novo','butNotFoundItem','butNotFoundItem']
+        response=self.runScript(SCRIPT_GET_VALUE_BY_ID.format(id="txtStatus"))
+        if response[0]==FALSE:
+            return response[0:3],(dataDct,)
+        resp=response[3]
 
-        posicao=0
-        while posicao<4:
-            funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(conjByTipo[posicao],conjTextElement[posicao])
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__1.1',[]
+        dataDct['STATUS']=resp
+        dataDct['CONTROLE']=self.getCodeControl(resp)
+        if resp.find('APROVAD')>EOF:
+            response=self.runScript(SCRIPT_GET_INNERTEXT_BY_ID.format(id="txtD0"))
+            if response[0]==FALSE:
+                return response[0:3],(dataDct,)
+            dataDct['DESCRICAO']=response[3]
 
-            funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(conjByTipo[posicao+1],conjTextElement[posicao+1])
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__1.2',[]
-            webElemento.click()
-            posicao+=2
-            time.sleep(0.5)
+            response=self.runScript(SCRIPT_GET_VALUE_BY_ID.format(id="txtCodigo"))
+            if response[0]==FALSE:
+                return response[0:3],(dataDct,)
+            dataDct['KLASSMATT']=response[3]
 
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'txtNome')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__1.3',[]
+        elif resp.find('CANCEL')>EOF or resp.find('REVIS')>EOF or resp.find('COMPLEM')>EOF:
+            response=self.runScript("return document.getElementsByTagName('strong')[0].textContent")
+            if response[0]==FALSE:
+                return response[0:3],(dataDct,)
+            dataDct['OBS']=response[3]
+        return TRUE,ERR_NO_ERRO,STRNULL,dataDct           
+           
+    def __loop__(self):        
+        self.__sins__=[]
+        progressbar=progressBar()
+        n=len(self.sins)
+        i=0
+        for eachSin in self.sins:
+            self.waitBrowserAction(By.ID,'butFiltrar')    
+            scriptText= "abreSIN({sin})".format(sin=eachSin['SIN'])
+            response=self.runScript(scriptText)
+            if response[0]==FALSE:
+                return response
+            
+            self.waitBrowserAction(By.ID,'txtStatus')
+            response=self.webScraping(eachSin)
+            if response[0]==TRUE:
+                self.__sins__.append(response[3])
+            response=self.runScript("__doPostBack('ctl00$Body$TopMenu1$dlmenu$ctl01$lbutopcao','')")
+            if response[0]==FALSE:
+                return response
+            percent=int(100*i/n)
+            progressbar.update(percent)
+            i=i+1
+        progressbar.update(100)
+        progressbar.close()
+        return TRUE,ERR_NO_ERRO,STRNULL
 
-        funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('txtNome').value='"+str(dadoSin.nomeItem).strip()+"'")
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__1.4',[]
-        time.sleep(0.5)
+    def updateSins(self):
+         self.goToKmtHomePage()
+         self.goToKmtFollowSins()
+         self.browser.close()
+         return self.__sins__
 
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,'txtDescricao')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__1.5',[]
-        webElemento.send_keys(str(dadoSin.descricao).strip())
-        time.sleep(0.5)
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,'butContinuar')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__1.6',[]
-        webElemento.click()
-        self.__aguardarAcaoNavegador__(By.ID,'butAcao2')
-        time.sleep(0.5)
-
-        if dadoSin.urgente==True:
-            funcionou,msgErro,codErro=self.__executarJavaScript__("document.all('LinkButton2').item(1).click()")
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__1.7',[]
-            time.sleep(0.5)
-
-        conjScriptText=["document.getElementById('txtTipo').value='"+str(dadoSin.matServ).strip()+"'",
-                        "document.getElementById('txtUnidadeMedida').value='"+str(dadoSin.unMed).strip()+"'"]
-
-        posicao=0
-        while posicao<2:
-            funcionou,msgErro,codErro=self.__executarJavaScript__(conjScriptText[posicao])
-            time.sleep(0.5)
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__1.8',[]
-            posicao+=1
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.PARTIAL_LINK_TEXT,'Classificações')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__1.9',[]
-        webElemento.click()
-
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl04_txtCat')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__2.0',[]
-        time.sleep(0.5)
-
-        funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl04_txtCat').value='"+dadoSin.modalidade+"'")
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__2.1',[]
-        time.sleep(0.5)
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.PARTIAL_LINK_TEXT,'Mídia')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__2.2',[]
-        webElemento.click()
-        time.sleep(0.5)
-
-        funcionou,msgErro,codErro=self.__registerMidiaKmt__(dadoSin,qtdAnexosSin)
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__2.3',[]
-
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl04_txtCat')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__2.4',[]
-        time.sleep(0.5)
-
-        grupoDoSin=str(dadoSin.grupo).strip()
-        if grupoDoSin!='' and dadoSin.grupo!=None:
-            funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl02_txtCat').value='"+grupoDoSin+"'")
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__2.5',[]
-
-            subGrupoDoSin=str(dadoSin.subGrupo).strip()
-            if subGrupoDoSin!='' and dadoSin.subGrupo!=None:
-                funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl03_txtCat')
-                if funcionou==False:
-                    self.closeNavegator()
-                    return funcionou,msgErro,codErro,'__registerSinsInKmt__2.6',[]
-                time.sleep(0.5)
-
-                funcionou,msgErro,codErro=self.__executarJavaScript__("document.getElementById('ctl00_Body_tabCategorias_ucCategorias1_gvCategorias_ctl03_txtCat').value='"+subGrupoDoSin+"'")
-                if funcionou==False:
-                    self.closeNavegator()
-                    return funcionou,msgErro,codErro,'__registerSinsInKmt__2.7',[]
-
-        conjByTipo=[By.ID]
-        conjTextElement=['butAcao2','butContinuar']
-
-        posicao=0
-        while posicao<len(conjTextElement):
-            funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,conjTextElement[posicao])
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__2.8',[]
-
-            funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,conjTextElement[posicao])
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'__registerSinsInKmt__2.9',[]
-            webElemento.click()
-            posicao+=1
-            time.sleep(0.2)
-
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'butSim')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__3.0',[]
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,'label_numeroSin')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__3.1',[]
-        numeroSinCorrente=xp.substrRight(str(webElemento.text),6).strip()
-        informacoesDoSin=[str(dadoSin.codSol),numeroSinCorrente, str(dadoSin.descricao).strip()]
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.ID,'butNao') 
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__3.2',[]
-        webElemento.click()
-        posicao+=1
-        time.sleep(0.2)
-
-        funcionou,msgErro,codErro=self.__aguardarAcaoNavegador__(By.ID,'lbutopcao')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__3.3',[]
-
-        funcionou,msgErro,codErro,webElemento=self.__localizarWebElemento__(By.PARTIAL_LINK_TEXT,'Principal')
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'__registerSinsInKmt__3.4',[]
-        webElemento.click()
-        posicao+=1
-        time.sleep(0.2)
-
-        return True,'Sem Erro',0,'__registerSinsInKmt__Fim',informacoesDoSin
-          
-
-    def navegateThroughKlassmatt(self,urlKmt,modoNavegacaoOculto,tipoNavegador,loginKmt,senhaKmt,caminhoBaseDadosXls,nomeAbaPlanBaseDados='DADOS'):
-        sinsCadastros=[]
-        funcionou,msgErro,codErro,dadosParaCadastro,quantidadeRegistros,quantidadeAnexosPorRegistro=self.__obterDadosCadastro__()
-        if funcionou==False:
-            return funcionou,msgErro,codErro,'navegateThroughKlassmatt 1.0'
-        elif quantidadeRegistros<=0:
-            return False,'Planilha Vazia',conjuntoErros.pop('ErrBaseVazia'),'navegateThroughKlassmatt 1.1'
-
-        funcionou,msgErro,codErro=self.navegateOnWeb(urlKmt,modoNavegacaoOculto,tipoNavegador)
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro,'navegateThroughKlassmatt 1.2'
-        
-        funcionou,msgErro,codErro=self.__singInSiteKmt__(loginKmt,senhaKmt)
-        if funcionou==False:
-            self.closeNavegator()
-            return funcionou,msgErro,codErro       
-
-        eachRegistro=0
-        while eachRegistro<quantidadeRegistros-1:
-            funcionou,msgErro,codErro,localizacaoDoErro,informacaoSinCadastrado=self.__registerSinsInKmt__(dadosParaCadastro[eachRegistro],quantidadeAnexosPorRegistro[eachRegistro])
-            if funcionou==False:
-                self.closeNavegator()
-                return funcionou,msgErro,codErro,'navegateThroughKlassmatt 1.3'
-
-            xp.xlExcluirLinhasCads(caminhoBaseDadosXls,nomeAbaPlanBaseDados)
-            txtCreateListSinCad(informacaoSinCadastrado[1])
-            eachRegistro+=1
-
-        return funcionou,msgErro,codErro,'navegateThroughKlassmatt Fim'
+class goGitHub(__webBrowsing__):
+    def __init__(self, browserType=BROWSER_CHROME, hiddenMode=BROWSER_SHOW_RISED, urlWeb=STRNULL):
+        super().__init__(browserType=browserType, hiddenMode=hiddenMode, urlWeb=urlWeb)
+    def go(self):
+        self.goToWebPage(r'https://github.com/jays0n/Projeto-CadKlassmatt/tree/main/Module')
