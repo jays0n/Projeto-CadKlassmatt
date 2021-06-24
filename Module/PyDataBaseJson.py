@@ -1,40 +1,7 @@
 import json
-import os
-
-#Defines:
-NULL=None
-TRUE=True
-FALSE=False
-STRNULL=''  
-LSTNULL=[]
-MATNULL=[[]]
-DCTNULL={}
-ZERO=0
-
-#DATA TYPES ON DATABASE:
-TP_DATA_INT=0
-TP_DATA_DOUBLE=0.1
-TP_DATA_STRING=STRNULL
-TP_DATA_DATE_SHORT='01/01/1111'
-TP_DATA_DATE='01/01/1111 00:00:00'
-TP_DATA_HOUR='00:00:00'
-TP_DATA_BOOLEAN=FALSE
-TP_DATA_NULL=NULL
-
-#Erros:
-ERR_NO_ERRO=0
-ERR_LEN_TABLES=20
-ERR_FILE_NOT_EXIST=21
-ERR_INCORRECT_DATA=22
-ERR_TABLE_ALREADY_EXIST=23
-ERR_INCORRECT_FIELDS=24
-ERR_FILE_UNKNOWN_ERROR=25
-ERR_DATABASE_NOT_DELETED=26
-ERR_TABLE_NOT_DELETED=27
-ERR_TABLE_NOT_EXIST=28
-ERR_RECORD_NOT_EXIST=29
-ERR_CRITERION_INVALID=30
-
+import openpyxl as xl
+from PyDefines import *
+import sys
 
 def __concateDict__(dictA,dictB):
     dictResult=dictA
@@ -89,6 +56,14 @@ class manageJsonBd:
         except Exception as errMsg:
             return FALSE,ERR_FILE_NOT_EXIST,errMsg,DCTNULL
         return TRUE,ERR_NO_ERRO,STRNULL,oldContent
+
+    def isJsonEmpty(self):
+        work,errNum,errMsg,content=self.getJsonContent()
+        if work==FALSE:
+            return NULL
+        if content==DCTNULL:
+            return TRUE
+        return FALSE
     
     def deleteDataBase(self):
         work,codErr,msgErr=self.deleteJson()
@@ -96,6 +71,22 @@ class manageJsonBd:
             return work,ERR_DATABASE_NOT_DELETED,msgErr        
         self.createDataBase()
         return TRUE,ERR_NO_ERRO,STRNULL
+
+    def isTableEmpty(self,tableName):
+        tblName=tableName.upper()
+        if self.isJsonEmpty():
+            return TRUE
+        work,errNum,errMsg,base=self.getJsonContent()
+        if not work:
+            return TRUE
+
+        if checkKeys(tblName,base)==FALSE:
+            return TRUE
+
+        if base[tableName]==LSTNULL:
+            return TRUE
+
+        return FALSE
 
     def createTable(self,tableName,tblFields,tblStdTypeValue):
         tblName=str(tableName).upper()
@@ -129,8 +120,37 @@ class manageJsonBd:
         tblName=tableName.upper()        
         if checkKeys(tblName,base)==FALSE:
             return FALSE,ERR_TABLE_NOT_EXIST,STRNULL,LSTNULL
-        return TRUE,ERR_NO_ERRO,STRNULL,base[tblName]
-    
+        return TRUE,ERR_NO_ERRO,STRNULL,base[tblName]    
+  
+    def updateTable(self,tableName,tblData):
+        work,codErro,msgErro,base=self.getJsonContent()
+        if work==FALSE:
+            return work,codErro,msgErro
+        tblName=tableName.upper()  
+        if checkKeys(tblName,base)==FALSE:
+            return FALSE,ERR_TABLE_NOT_EXIST,STRNULL
+        
+        work,numErr,msgErr=self.deleteAllRecords(tableName)
+        if not work:
+            return work,numErr,msgErr
+        work,numErr,msgErr,cont=self.insertNewsRecords(tblName,tblData)
+        return work,numErr,msgErr,cont
+
+    def updateTable2(self,tableName,tblData):
+        work,codErro,msgErro,base=self.getJsonContent()
+        if work==FALSE:
+            return work,codErro,msgErro
+        tblName=tableName.upper()  
+        if checkKeys(tblName,base)==FALSE:
+            return FALSE,ERR_TABLE_NOT_EXIST,STRNULL
+        base[tblName]=tblData       
+        
+        work,codErro,msgErro=self.updateJson(base)
+        if work==FALSE:
+            return work,codErro,msgErro
+
+        return self.__updateIDS__(tblName)
+
     def getTableFields(self,tableName):
         work,codErr,msgErr,table=self.getTable(tableName)
         if work==FALSE:
@@ -156,6 +176,19 @@ class manageJsonBd:
             return FALSE,ERR_TABLE_NOT_EXIST,STRNULL
         base.pop(tblName)
         return self.updateJson(base)     
+
+    def deleteAllRecords(self,tableName):
+        work,numErr,msgErr,lastRec=self.getLastRecord(tableName)
+        if work==FALSE:
+            return work,numErr,msgErr
+
+        lastRec['ID']=-1
+        work,numErr,msgErr=self.deleteTable(tableName)
+        if not work:
+            return work,numErr,msgErr
+        fields=list(lastRec.keys())[1::]
+        types=list(lastRec.values())[1::]
+        return self.createTable(tableName,fields,types)
     
     def getTableLenght(self,tableName):
         work,numErr,msgErr,lastRec=self.getLastRecord(tableName)
@@ -171,7 +204,10 @@ class manageJsonBd:
         if checkKeys(tblName,content)==FALSE:
             return FALSE,ERR_TABLE_NOT_EXIST,STRNULL,DCTNULL
         lstLenght=len(content[tblName])
-        lastRecord=content[tblName].pop(lstLenght-1)
+        try:
+            lastRecord=content[tblName].pop(lstLenght-1)
+        except Exception as MSGERRO:
+            return FALSE,ERR_EMPTY_TABLE,MSGERRO,DCTNULL
         return WORK,NUMERRO,MSGERRO,lastRecord
     
     def __insertFirstReg__(self,tblName,firstRecord):
@@ -195,7 +231,8 @@ class manageJsonBd:
             posicao+=1            
         return TRUE,ERR_NO_ERRO,STRNULL,adjustedRec        
 
-    def insertNewRecord(self,tblName,newRecord):
+    def insertNewRecord(self,tableName,newRecord):
+        tblName=tableName.upper()
         work,numErr,msgErr,lastRec=self.getLastRecord(tblName)
         if work==FALSE:
             return  work,numErr,msgErr        
@@ -215,6 +252,17 @@ class manageJsonBd:
         
         table.append(newRecordBd)
         return self.subscribeTable(tblName, table)   
+
+    def insertNewsRecords(self,tblName,lstData):
+        cont=0
+        if lstData==LSTNULL:
+            return TRUE,ERR_NO_ERRO,STRNULL,ZERO
+        for eachRecord in lstData:
+            work,numErr,msgErr=self.insertNewRecord(tblName,eachRecord)
+            if work==FALSE:
+                return work,numErr,msgErr,cont
+            cont+=1
+        return TRUE,ERR_NO_ERRO,STRNULL,cont
         
     def getRecord(self,tableName,tableCriterionField,tabelCriterionValue,occurrence=1):
         work,codErr,msgErr,table=self.getTable(tableName)
@@ -237,7 +285,21 @@ class manageJsonBd:
                 turn+=1
         
         return TRUE,ERR_NO_ERRO,STRNULL,record  
+
+    def getRecords(self,tableName):
+        work,codErr,msgErr,table=self.getTable(tableName)
+        if work==FALSE:
+            return work,codErr,msgErr,LSTNULL   
+        tbl=[]
+        for eachElement in table:
+            eachElement.pop("ID")
+            tbl.append(eachElement)
+        return TRUE,ERR_NO_ERRO,STRNULL,tbl
     
+    def checkRecord(self,tableName,tableCriterionField,tabelCriterionValue):
+        work,codErr,msgErr,oldRecord=self.getRecord(tableName, tableCriterionField, tabelCriterionValue,1)
+        return work
+
     def updateRecord(self,tableName,newData,tableCriterionField,tabelCriterionValue,occurrence=1):
         work,codErr,msgErr,oldRecord=self.getRecord(tableName, tableCriterionField, tabelCriterionValue,occurrence)
         if work==FALSE:
@@ -278,3 +340,46 @@ class manageJsonBd:
         if work==FALSE:
             return work,codErr,msgErr        
         return self.__updateIDS__(tableName)
+
+class manageXls:
+    def __init__(self,path=PATH_STANDARD,name="SAIDA_KLASSMATT.xlsx"):
+        self.path=path + "\\" + name
+        return
+
+    def setPath(self,path,name):
+        self.path=path +'\\'+ name
+        return
+
+    def create(self,title="DADOS"):
+        book=xl.Workbook()
+        book.worksheets[0].title=title
+        book.save(self.path)
+        return
+
+    def recordXls(self,data):
+        try:
+            self.create()
+        except Exception as errMsg:
+            return FALSE,ERR_WORKBOOK_NOT_CREATED,errMsg
+
+        book=xl.load_workbook(self.path,FALSE)
+        sheet=book.worksheets[0]
+
+        if data==LSTNULL:
+            book.save(self.path)
+            return TRUE,ERR_NO_ERRO,STRNULL
+
+        column=1
+        for eachElement in data[0].keys():
+            sheet.cell(1,column).value=eachElement
+            column+=1
+
+        row=2
+        for eachElement in data:
+            column=1
+            for eachOne in eachElement.values():
+               sheet.cell(row,column).value=eachOne
+               column+=1
+            row+=1
+        book.save(self.path)
+        return TRUE,ERR_NO_ERRO,STRNULL
