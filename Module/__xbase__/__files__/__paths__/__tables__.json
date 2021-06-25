@@ -1,0 +1,2148 @@
+{
+  "MATSERV": [
+    {
+      "ID": 0,
+      "ITEM": "MATERIAL"
+    },
+    {
+      "ID": 1,
+      "ITEM": "SERVICO"
+    }
+  ],
+  "UNIDADE": [
+    {
+      "ID": 0,
+      "ITEM": "PECA"
+    },
+    {
+      "ID": 1,
+      "ITEM": "CAIXA"
+    },
+    {
+      "ID": 2,
+      "ITEM": "CENTIMETRO"
+    },
+    {
+      "ID": 3,
+      "ITEM": "CENTIMETRO CUBICO"
+    },
+    {
+      "ID": 4,
+      "ITEM": "CENTIMETRO QUADRADO"
+    },
+    {
+      "ID": 5,
+      "ITEM": "CENTO"
+    },
+    {
+      "ID": 6,
+      "ITEM": "CONJUNTO"
+    },
+    {
+      "ID": 7,
+      "ITEM": "DIA"
+    },
+    {
+      "ID": 8,
+      "ITEM": "DUZIA"
+    },
+    {
+      "ID": 9,
+      "ITEM": "FARDO"
+    },
+    {
+      "ID": 10,
+      "ITEM": "FOLHA"
+    },
+    {
+      "ID": 11,
+      "ITEM": "GALÃO"
+    },
+    {
+      "ID": 12,
+      "ITEM": "HECTOLITRO"
+    },
+    {
+      "ID": 13,
+      "ITEM": "HOMEM DIA"
+    },
+    {
+      "ID": 14,
+      "ITEM": "HOMEM HORA"
+    },
+    {
+      "ID": 15,
+      "ITEM": "HOMEM MES"
+    },
+    {
+      "ID": 16,
+      "ITEM": "HORA"
+    },
+    {
+      "ID": 17,
+      "ITEM": "JOGO"
+    },
+    {
+      "ID": 18,
+      "ITEM": "KIT"
+    },
+    {
+      "ID": 19,
+      "ITEM": "KW/h"
+    },
+    {
+      "ID": 20,
+      "ITEM": "LITRO"
+    },
+    {
+      "ID": 21,
+      "ITEM": "LITRO POR SEGUNDO"
+    },
+    {
+      "ID": 22,
+      "ITEM": "MES"
+    },
+    {
+      "ID": 23,
+      "ITEM": "METRO"
+    },
+    {
+      "ID": 24,
+      "ITEM": "METRO CUBICO"
+    },
+    {
+      "ID": 25,
+      "ITEM": "METRO POR SEGUNDO"
+    },
+    {
+      "ID": 26,
+      "ITEM": "METRO QUADRADO"
+    },
+    {
+      "ID": 27,
+      "ITEM": "MILHEIRO"
+    },
+    {
+      "ID": 28,
+      "ITEM": "MILILITRO"
+    },
+    {
+      "ID": 29,
+      "ITEM": "NÃO DEFINIDA"
+    },
+    {
+      "ID": 30,
+      "ITEM": "PAR"
+    },
+    {
+      "ID": 31,
+      "ITEM": "BALDE"
+    },
+    {
+      "ID": 32,
+      "ITEM": "QUILOGRAMA"
+    },
+    {
+      "ID": 33,
+      "ITEM": "QUILOMETRO"
+    },
+    {
+      "ID": 34,
+      "ITEM": "QUILOMETRO QUADRADO"
+    },
+    {
+      "ID": 35,
+      "ITEM": "R$"
+    },
+    {
+      "ID": 36,
+      "ITEM": "RESMA"
+    },
+    {
+      "ID": 37,
+      "ITEM": "ROTAÇÕES POR MINUTO"
+    },
+    {
+      "ID": 38,
+      "ITEM": "SEGUNDO"
+    },
+    {
+      "ID": 39,
+      "ITEM": "TAMBOR"
+    },
+    {
+      "ID": 40,
+      "ITEM": "TONELADA"
+    },
+    {
+      "ID": 41,
+      "ITEM": "TONELADA METRICA"
+    },
+    {
+      "ID": 42,
+      "ITEM": "UNIDADE"
+    }
+  ],
+  "GRUPO": [
+    {
+      "ID": 0,
+      "CODIGO": "",
+      "ITEM": ""
+    },
+    {
+      "ID": 1,
+      "CODIGO": "06",
+      "ITEM": "06. ARTIGOS ESPORTIVOS"
+    },
+    {
+      "ID": 2,
+      "CODIGO": "10",
+      "ITEM": "10. COMBUSTIVEIS"
+    },
+    {
+      "ID": 3,
+      "CODIGO": "14",
+      "ITEM": "14. MATERIAIS CONSTRUCAO CIVIL"
+    },
+    {
+      "ID": 4,
+      "CODIGO": "18",
+      "ITEM": "18. MATERIAIS COPA E COZINHA"
+    },
+    {
+      "ID": 5,
+      "CODIGO": "22",
+      "ITEM": "22. MATERIAIS ELETRICOS (MATERIAIS, EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 6,
+      "CODIGO": "26",
+      "ITEM": "26. MATERIAIS EMBALAGENS"
+    },
+    {
+      "ID": 7,
+      "CODIGO": "30",
+      "ITEM": "30. MATERIAIS EXPEDIENTE"
+    },
+    {
+      "ID": 8,
+      "CODIGO": "34",
+      "ITEM": "34. MATERIAIS FERROVIARIOS (EQUIPAMENTOS / SUPRIMENTOS)"
+    },
+    {
+      "ID": 9,
+      "CODIGO": "38",
+      "ITEM": "38. MATERIAIS CALDERARIA"
+    },
+    {
+      "ID": 10,
+      "CODIGO": "42",
+      "ITEM": "42. MATERIAIS HIGIENE E LIMPEZA"
+    },
+    {
+      "ID": 11,
+      "CODIGO": "46",
+      "ITEM": "46. MATERIAIS INFORMATICA (EQUIPAMENTOS / SUPRIMENTOS)"
+    },
+    {
+      "ID": 12,
+      "CODIGO": "50",
+      "ITEM": "50. MATERIAIS INSTRUMENTACAO (EQUIPAMENTOS / SUPRIMENTOS)"
+    },
+    {
+      "ID": 13,
+      "CODIGO": "54",
+      "ITEM": "54. MATERIAIS MECANICA (COMMODITIES - COMUNS DE MERCADO)"
+    },
+    {
+      "ID": 14,
+      "CODIGO": "58",
+      "ITEM": "58. MATERIAIS MECANICA (EQUIPAMENTOS / SOBRESSALENTES)"
+    },
+    {
+      "ID": 15,
+      "CODIGO": "62",
+      "ITEM": "62. MATERIAIS SEGURANCA"
+    },
+    {
+      "ID": 16,
+      "CODIGO": "66",
+      "ITEM": "66. MOVEIS E UTENSILIOS"
+    },
+    {
+      "ID": 17,
+      "CODIGO": "70",
+      "ITEM": "70. OLEOS, LUBRIFICANTES E CERAS"
+    },
+    {
+      "ID": 18,
+      "CODIGO": "74",
+      "ITEM": "74. PRODUTOS QUIMICOS"
+    },
+    {
+      "ID": 19,
+      "CODIGO": "78",
+      "ITEM": "78. RESIDUOS E SUCATAS"
+    },
+    {
+      "ID": 20,
+      "CODIGO": "97",
+      "ITEM": "97. BENEFICIOS"
+    },
+    {
+      "ID": 21,
+      "CODIGO": "98",
+      "ITEM": "98. DESPESAS E DOAÇÕES"
+    },
+    {
+      "ID": 22,
+      "CODIGO": "99",
+      "ITEM": "99. SERVICOS E UTILIDADES"
+    },
+    {
+      "ID": 23,
+      "CODIGO": "02",
+      "ITEM": "02. AMBULATORIO E MEDICAMENTOS"
+    }
+
+  ],
+  "SUBGRUPO": [
+    {
+      "ID": 0,
+      "CODIGO": "",
+      "ITEM": ""
+    },
+    {
+      "ID": 1,
+      "CODIGO": "02",
+      "ITEM": "015. AMBULANCIA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES) "
+    },
+    {
+      "ID": 2,
+      "CODIGO": "02",
+      "ITEM": "020. DESCARTAVEIS (AGULHAS, SERINGAS, LUVAS CIRURGICAS...)"
+    },
+    {
+      "ID": 3,
+      "CODIGO": "02",
+      "ITEM": "025. INSTRUMENTOS AMBULATORIAIS E ACESSORIOS"
+    },
+    {
+      "ID": 4,
+      "CODIGO": "02",
+      "ITEM": "030. MATERIAIS  DE ASSEPSIA"
+    },
+    {
+      "ID": 5,
+      "CODIGO": "02",
+      "ITEM": "035. MATERIAIS E EQUIPAMENTOS TRATAMENTO DENTARIO"
+    },
+    {
+      "ID": 6,
+      "CODIGO": "02",
+      "ITEM": "040. MEDICAMENTOS (COMPRIMIDOS, INJETAVEIS, CREMES, LOCOES, LIQUIDOS) "
+    },
+    {
+      "ID": 7,
+      "CODIGO": "02",
+      "ITEM": "045. MOVEIS AMBULATORIAIS (MACAS, ARMARIOS P/MEDICAMENTO...)"
+    },
+    {
+      "ID": 8,
+      "CODIGO": "06",
+      "ITEM": "010. ARTIGOS PARA JOGOS DE MESA (FUTEBOL DE BOTAO. BILHAR, SINUCA, TENES DE MESA, PING-PONG, PACAU, PIMBOLIN"
+    },
+    {
+      "ID": 9,
+      "CODIGO": "06",
+      "ITEM": "015. BARALHOS EM GERAL"
+    },
+    {
+      "ID": 10,
+      "CODIGO": "06",
+      "ITEM": "020. BOLAS EM GERAL (TENIS, GOLF, FUTEBOL, PING-PONG, BASQUETE...)"
+    },
+    {
+      "ID": 11,
+      "CODIGO": "06",
+      "ITEM": "025. CALCADOS (TENIS, CHUTEIRAS, TENIS P/FUTEBOL...)"
+    },
+    {
+      "ID": 12,
+      "CODIGO": "06",
+      "ITEM": "030. EQUIPAMENTOS P/ACADEMIA (ESTEIRAS, BICICLES HERGOMETRICAS, PESOS...)"
+    },
+    {
+      "ID": 13,
+      "CODIGO": "06",
+      "ITEM": "035. MAQUINAS P/JOGOS ELETRONICOS, VIDIO GAMES, E JOGOS"
+    },
+    {
+      "ID": 14,
+      "CODIGO": "06",
+      "ITEM": "040. MATERIAS P/PRATICA DE BOXE (LUVAS, PROTECOES, SACO DE AREIA...)"
+    },
+    {
+      "ID": 15,
+      "CODIGO": "06",
+      "ITEM": "045. TABULEIROS (XADREX, DAMAS, GAMAO...)"
+    },
+    {
+      "ID": 16,
+      "CODIGO": "06",
+      "ITEM": "050. UNIFORMES ESPORTIVOS (CAMISAS, MEIAS, CALCOES, KIMONOS...)"
+    },
+    {
+      "ID": 17,
+      "CODIGO": "10",
+      "ITEM": "010. BIODIESEL"
+    },
+    {
+      "ID": 18,
+      "CODIGO": "10",
+      "ITEM": "015. CARVAO VEGETAL"
+    },
+    {
+      "ID": 19,
+      "CODIGO": "10",
+      "ITEM": "020. ETANOL (ALCOOL)"
+    },
+    {
+      "ID": 20,
+      "CODIGO": "10",
+      "ITEM": "025. GAS GLP"
+    },
+    {
+      "ID": 21,
+      "CODIGO": "10",
+      "ITEM": "030. GASOLINA"
+    },
+    {
+      "ID": 22,
+      "CODIGO": "10",
+      "ITEM": "035. OLEO (COMBUSTIVEL PESADO - IFO)"
+    },
+    {
+      "ID": 23,
+      "CODIGO": "10",
+      "ITEM": "040. OLEO DIESEL"
+    },
+    {
+      "ID": 24,
+      "CODIGO": "14",
+      "ITEM": "010. ANDAIMES E ESCORAS TUBULARES"
+    },
+    {
+      "ID": 25,
+      "CODIGO": "14",
+      "ITEM": "015. ARAME FARPADO"
+    },
+    {
+      "ID": 26,
+      "CODIGO": "14",
+      "ITEM": "025. ARAME RECOZIDO (LISO E TRANCADO)"
+    },
+    {
+      "ID": 27,
+      "CODIGO": "14",
+      "ITEM": "030. AREIA (FINA, MEDIA, GROSSA, LAVADA...)"
+    },
+    {
+      "ID": 28,
+      "CODIGO": "14",
+      "ITEM": "035. BETONEIRAS (EQUIPAMENTOS ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 29,
+      "CODIGO": "14",
+      "ITEM": "040. BLOCOS CERAMICOS E TIJOLOS..."
+    },
+    {
+      "ID": 30,
+      "CODIGO": "14",
+      "ITEM": "045. BLOCOS EM CONCRETO"
+    },
+    {
+      "ID": 31,
+      "CODIGO": "14",
+      "ITEM": "050. BRITA (GRANULOMETRIA; O, 1, 2, 3, 4, 5, PEDRISCOS, RACHAO...)"
+    },
+    {
+      "ID": 32,
+      "CODIGO": "14",
+      "ITEM": "055. CAIXAS D'AGUAS EM FIBRO CIMENTO E RESINAS TERMOPLASTICAS"
+    },
+    {
+      "ID": 33,
+      "CODIGO": "14",
+      "ITEM": "060. CIMENTO, ADITIVOS"
+    },
+    {
+      "ID": 34,
+      "CODIGO": "14",
+      "ITEM": "065. CONCRETO"
+    },
+    {
+      "ID": 35,
+      "CODIGO": "14",
+      "ITEM": "070. DIVISORIAS"
+    },
+    {
+      "ID": 36,
+      "CODIGO": "14",
+      "ITEM": "075. ESQUADRIAS EM ACO CARBONO E ALUMINIO"
+    },
+    {
+      "ID": 37,
+      "CODIGO": "14",
+      "ITEM": "080. ESQUADRIAS EM MADEIRA"
+    },
+    {
+      "ID": 38,
+      "CODIGO": "14",
+      "ITEM": "085. ESQUADRIAS EM PVC"
+    },
+    {
+      "ID": 39,
+      "CODIGO": "14",
+      "ITEM": "090. ESTRUTURAS METALICAS"
+    },
+    {
+      "ID": 40,
+      "CODIGO": "14",
+      "ITEM": "095. MARMORES E GRANITOS"
+    },
+    {
+      "ID": 41,
+      "CODIGO": "14",
+      "ITEM": "100. MATERIAIS  HIDROSANITARIOS (VASOS,REGISTROS E TORNEIRAS..)"
+    },
+    {
+      "ID": 42,
+      "CODIGO": "14",
+      "ITEM": "105. MOIRAO (MADEIRA, CONCRETO, PEDRA)"
+    },
+    {
+      "ID": 43,
+      "CODIGO": "14",
+      "ITEM": "110. PEDRAS NATURAIS"
+    },
+    {
+      "ID": 44,
+      "CODIGO": "14",
+      "ITEM": "115. PINCEIS (TRINCHAS), ROLOS, BROCHAS"
+    },
+    {
+      "ID": 45,
+      "CODIGO": "14",
+      "ITEM": "120. PISOS E REVESTIMENTOS CERAMICOS"
+    },
+    {
+      "ID": 46,
+      "CODIGO": "14",
+      "ITEM": "125. PREGOS E GRAMPOS P/CERCAS"
+    },
+    {
+      "ID": 47,
+      "CODIGO": "14",
+      "ITEM": "130. PRE-MOLDADOS EM CONCRETO"
+    },
+    {
+      "ID": 48,
+      "CODIGO": "14",
+      "ITEM": "135. REFRATARIOS (TIJOLOS, CIMENTOS...)"
+    },
+    {
+      "ID": 49,
+      "CODIGO": "14",
+      "ITEM": "140. TABUAS, PRANCHAS, GUIAS, CAIBROS, "
+    },
+    {
+      "ID": 50,
+      "CODIGO": "14",
+      "ITEM": "145. TELAS METALICAS C/REVESTIMENTO PVC, S/REVISTIMENTO"
+    },
+    {
+      "ID": 51,
+      "CODIGO": "14",
+      "ITEM": "150. TELHAS (FIBROCIMENTO, CERAMICA, METALICAS...)"
+    },
+    {
+      "ID": 52,
+      "CODIGO": "14",
+      "ITEM": "155. TINTAS BASE PVA, ACRILICA"
+    },
+    {
+      "ID": 53,
+      "CODIGO": "14",
+      "ITEM": "160. TUBOS E CONEXOES EM PVC"
+    },
+    {
+      "ID": 54,
+      "CODIGO": "14",
+      "ITEM": "165. VERGALHOES (FERRO CONSTRUCAO)"
+    },
+    {
+      "ID": 55,
+      "CODIGO": "18",
+      "ITEM": "010. BEBIDAS ALCOOLICAS (CERVEJA, VINHOS, VODKA, WHISKY, LICOR, DESTILADOS, ESPUMANTE...)"
+    },
+    {
+      "ID": 56,
+      "CODIGO": "18",
+      "ITEM": "015. BEBIDAS NAO ALCOOLICAS (AGUA, SUCO, REFRIGERANTE, ENERGETICO, POLPA...)"
+    },
+    {
+      "ID": 57,
+      "CODIGO": "18",
+      "ITEM": "020. BEBIDAS SOLUVEIS (CAFE, CHA, REFRESCO, ACHOCOLATADO...)"
+    },
+    {
+      "ID": 58,
+      "CODIGO": "18",
+      "ITEM": "025. BISCOITOS, SNACKS E BARRAS"
+    },
+    {
+      "ID": 59,
+      "CODIGO": "18",
+      "ITEM": "030. CARNES, PEIXES E AVES "
+    },
+    {
+      "ID": 60,
+      "CODIGO": "18",
+      "ITEM": "035. BOMBONIERE, SOBREMESA E DOCE (AÇÚCARES E ADOÇANTES, GOIABADAS GELÉIAS, BOMBOM, CHOCOLATE, MEL...)"
+    },
+    {
+      "ID": 61,
+      "CODIGO": "18",
+      "ITEM": "040. CONGELADOS "
+    },
+    {
+      "ID": 62,
+      "CODIGO": "18",
+      "ITEM": "045. ENLATADOS, CONSERVAS E ANTEPASTOS "
+    },
+    {
+      "ID": 63,
+      "CODIGO": "18",
+      "ITEM": "050. FRIOS, LATICINIOS E OVOS"
+    },
+    {
+      "ID": 64,
+      "CODIGO": "18",
+      "ITEM": "055. HORTIFRUTI "
+    },
+    {
+      "ID": 65,
+      "CODIGO": "18",
+      "ITEM": "060. GRAOS, CEREAIS E FARINACEOS "
+    },
+    {
+      "ID": 66,
+      "CODIGO": "18",
+      "ITEM": "065. MASSAS, PAES BOLOS E PADARIA"
+    },
+    {
+      "ID": 67,
+      "CODIGO": "18",
+      "ITEM": "070. OLEOS, GORDURA, TEMPEROS, MOLHO E CONDIMENTO"
+    },
+    {
+      "ID": 68,
+      "CODIGO": "18",
+      "ITEM": "075. SOPAS, CREMES E CALDOS"
+    },
+    {
+      "ID": 69,
+      "CODIGO": "18",
+      "ITEM": "080. MATERIAIS DESCARTAVEIS (COPOS, MEXEDORES, GUARDANAPOS, SUPORTES P/COPOS DESCARTAVEIS...)"
+    },
+    {
+      "ID": 70,
+      "CODIGO": "18",
+      "ITEM": "085. UTENSILIOS DE COZINHA (PANELAS,TALHERES, TRAVESSAS...)"
+    },
+    {
+      "ID": 71,
+      "CODIGO": "22",
+      "ITEM": "010. AMPERIMETROS"
+    },
+    {
+      "ID": 72,
+      "CODIGO": "22",
+      "ITEM": "015. BATERIAS (AUTOMOTIVAS, TIPO PILHA...)"
+    },
+    {
+      "ID": 73,
+      "CODIGO": "22",
+      "ITEM": "020. BLOCO CONTATO, CONTATORES E BOBINAS"
+    },
+    {
+      "ID": 74,
+      "CODIGO": "22",
+      "ITEM": "025. BOTOES COMANDO E SINALIZACOES"
+    },
+    {
+      "ID": 75,
+      "CODIGO": "22",
+      "ITEM": "030. CAPACITORES (OLEO, CERAMICA, POLIESTER)"
+    },
+    {
+      "ID": 76,
+      "CODIGO": "22",
+      "ITEM": "035. CHAVES, TOMADAS, PLUGS, BOTOEIRAS"
+    },
+    {
+      "ID": 77,
+      "CODIGO": "22",
+      "ITEM": "040. DISJUNTORES"
+    },
+    {
+      "ID": 78,
+      "CODIGO": "22",
+      "ITEM": "045. ELETRODUTOS, CONEXOES E ACESSORIOS ELETRICOS"
+    },
+    {
+      "ID": 79,
+      "CODIGO": "22",
+      "ITEM": "050. ESCOVAS CARVAO P/MOTORES (ELETRICAS)"
+    },
+    {
+      "ID": 80,
+      "CODIGO": "22",
+      "ITEM": "055. FIOS CABOS E ACESSORIOS (ABRACADEIRA, TERMINAIS IDENTIFICADORES, FITAS ISOLANTES)"
+    },
+    {
+      "ID": 81,
+      "CODIGO": "22",
+      "ITEM": "060. FORNOS ELETRICOS (EQUIPAMENTOS ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 82,
+      "CODIGO": "22",
+      "ITEM": "065. FUSIVEIS E ACESSORIOS (DIAZED, NEOZED, NH, SISTOR, CARTUCHOS, ELEO FUSIVEIS...)"
+    },
+    {
+      "ID": 83,
+      "CODIGO": "22",
+      "ITEM": "070. GERADORES  (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 84,
+      "CODIGO": "22",
+      "ITEM": "075. ISOLADORES, POSTES E ACESSORIOS"
+    },
+    {
+      "ID": 85,
+      "CODIGO": "22",
+      "ITEM": "080. LAMPADAS (INCANDESCENTE, FLUORESCENTES, NEON, VAPORES SODIO, MERCURIO) LUMINARIAS E REATORES E ACESSORIOS"
+    },
+    {
+      "ID": 86,
+      "CODIGO": "22",
+      "ITEM": "085. MICRORRUPTORES (MICRO SWITCH, CHAVE FIM CURSO)"
+    },
+    {
+      "ID": 87,
+      "CODIGO": "22",
+      "ITEM": "090. MOTORES ELETRICOS E ACESSORIOS"
+    },
+    {
+      "ID": 88,
+      "CODIGO": "22",
+      "ITEM": "095. PAINEIS E ACESSORIOS"
+    },
+    {
+      "ID": 89,
+      "CODIGO": "22",
+      "ITEM": "100. PARA-RAIOS E SINALIZADORES"
+    },
+    {
+      "ID": 90,
+      "CODIGO": "22",
+      "ITEM": "105. PILHAS (COMUM, RECARREGAVEIS, TIPO DURACEL...)"
+    },
+    {
+      "ID": 91,
+      "CODIGO": "22",
+      "ITEM": "110. QUADRO DE COMANDO "
+    },
+    {
+      "ID": 92,
+      "CODIGO": "22",
+      "ITEM": "115. RELES TEMPORIZADORES, PROTECAO"
+    },
+    {
+      "ID": 93,
+      "CODIGO": "22",
+      "ITEM": "120. RESISTENCIAS ELETRICAS (CARTUCHOS, COLEIRAS, CHAPAS)"
+    },
+    {
+      "ID": 94,
+      "CODIGO": "22",
+      "ITEM": "125. SUBESTACOES (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 95,
+      "CODIGO": "22",
+      "ITEM": "130. TRANSFORMADORES ALTA TENSAO (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 96,
+      "CODIGO": "22",
+      "ITEM": "135. TRANSFORMADORES BAIXA TENSAO (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 97,
+      "CODIGO": "22",
+      "ITEM": "140. TRANSFORMADORES MEDIA TENSAO (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 98,
+      "CODIGO": "26",
+      "ITEM": "010. BIG BAG, CONTENTORES FLEXIVEIS EM POLIPROPILENO"
+    },
+    {
+      "ID": 99,
+      "CODIGO": "26",
+      "ITEM": "015. BOMBONAS EM RESINAS TERMOPLASTICAS (PLASTICO)"
+    },
+    {
+      "ID": 100,
+      "CODIGO": "26",
+      "ITEM": "020. CAIXAS EM MADEIRA"
+    },
+    {
+      "ID": 101,
+      "CODIGO": "26",
+      "ITEM": "025. CAIXAS EM MATERIAIS TERMOPLASTICOS (PLASTICO)"
+    },
+    {
+      "ID": 102,
+      "CODIGO": "26",
+      "ITEM": "030. CAIXAS EM PAPELAO"
+    },
+    {
+      "ID": 103,
+      "CODIGO": "26",
+      "ITEM": "035. FILMES EM PVC EM GERAL"
+    },
+    {
+      "ID": 104,
+      "CODIGO": "26",
+      "ITEM": "040. FILMES TERMOENCOLHIVEIS / POLIETILENO"
+    },
+    {
+      "ID": 105,
+      "CODIGO": "26",
+      "ITEM": "045. FITAS ADESIVAS P/FECHAMENTO DE CAIXAS E EMBALAGENS"
+    },
+    {
+      "ID": 106,
+      "CODIGO": "26",
+      "ITEM": "050. FITAS EM ACO"
+    },
+    {
+      "ID": 107,
+      "CODIGO": "26",
+      "ITEM": "055. FITAS EM RESINAS, NYLON"
+    },
+    {
+      "ID": 108,
+      "CODIGO": "26",
+      "ITEM": "060. GRAMPEADOR E GRAMPOS P/FECHAMENTO EMBALAGENS  (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 109,
+      "CODIGO": "26",
+      "ITEM": "065. LACRES EM GERAL (NYLON, METALICO, POLIETILENO...)"
+    },
+    {
+      "ID": 110,
+      "CODIGO": "26",
+      "ITEM": "070. LONAS"
+    },
+    {
+      "ID": 111,
+      "CODIGO": "26",
+      "ITEM": "075. MAQUINA DE FECHAR, GRAMPEAR, PREGAR, COLAR E AMARRAR"
+    },
+    {
+      "ID": 112,
+      "CODIGO": "26",
+      "ITEM": "080. MAQUINA DE MARCAR E DE ETIQUETAR (ROTULADORAS)"
+    },
+    {
+      "ID": 113,
+      "CODIGO": "26",
+      "ITEM": "085. PALETES (ESTRADOS) MADEIRA E RESINAS TERMOPLASTICAS"
+    },
+    {
+      "ID": 114,
+      "CODIGO": "26",
+      "ITEM": "090. PLASTICO BOLHA "
+    },
+    {
+      "ID": 115,
+      "CODIGO": "26",
+      "ITEM": "095. SACOLAS EM GERAL"
+    },
+    {
+      "ID": 116,
+      "CODIGO": "26",
+      "ITEM": "100. SACOS, PAPEL, PEDB, PEAD, PE, RAFIA..."
+    },
+    {
+      "ID": 117,
+      "CODIGO": "26",
+      "ITEM": "105. SELOS FITA EM ACO"
+    },
+    {
+      "ID": 118,
+      "CODIGO": "26",
+      "ITEM": "110. SELOS FITA EM RESINAS, NYLON"
+    },
+    {
+      "ID": 119,
+      "CODIGO": "26",
+      "ITEM": "115. TAMBORES METALICOS C/ISOLAMENTO E S/ISOLAMENTO INTERNO"
+    },
+    {
+      "ID": 120,
+      "CODIGO": "30",
+      "ITEM": "010. ASSINATURAS E PUBLICACOES"
+    },
+    {
+      "ID": 121,
+      "CODIGO": "30",
+      "ITEM": "015. ENVELOPES (DE/PARA, DIVERSOS)"
+    },
+    {
+      "ID": 122,
+      "CODIGO": "30",
+      "ITEM": "020. FRAGMENTADORAS DE PAPEL  (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 123,
+      "CODIGO": "30",
+      "ITEM": "025. IMPRESSOS (NF, FORMULARIOS,  BLOCOS DIVERSOS)"
+    },
+    {
+      "ID": 124,
+      "CODIGO": "30",
+      "ITEM": "030. MATERIAIS  ESCRITORIO (LAPIS, REGUAS, CANETAS, GRAFITE, CLIPES, GRAMPOS, TESOURAS, CADERNOS)"
+    },
+    {
+      "ID": 125,
+      "CODIGO": "30",
+      "ITEM": "035. MATERIAIS  MARKETING ("
+    },
+    {
+      "ID": 126,
+      "CODIGO": "30",
+      "ITEM": "040. PAPEIS (A4, A3, HELIOGRAFICO....)"
+    },
+    {
+      "ID": 127,
+      "CODIGO": "34",
+      "ITEM": "010. DORMENTES (CONCRETO, MADEIRA)"
+    },
+    {
+      "ID": 128,
+      "CODIGO": "34",
+      "ITEM": "015. TRILHOS FERROVIARIOS E ACESSORIOS"
+    },
+    {
+      "ID": 129,
+      "CODIGO": "38",
+      "ITEM": "010. BARRAS EM ACO CARBONO EM GERAL (CHATA, REDONDA, QUADRADA...)"
+    },
+    {
+      "ID": 130,
+      "CODIGO": "38",
+      "ITEM": "015. BARRAS EM ACO INOX EM GERAL  (CHATA, REDONDA, QUADRADA...)"
+    },
+    {
+      "ID": 131,
+      "CODIGO": "38",
+      "ITEM": "020. BARRAS EM FERRO FUNDIDO, NODULAR EM GERAL"
+    },
+    {
+      "ID": 132,
+      "CODIGO": "38",
+      "ITEM": "025. BARRAS EM LATAO, BRONZE, ALUMINIO E COBRE  (CHATA, REDONDA, QUADRADA...)"
+    },
+    {
+      "ID": 133,
+      "CODIGO": "38",
+      "ITEM": "030. BARRAS EM RESINAS TERMOPLASTICAS (POLURETANOS, TEFLON...)"
+    },
+    {
+      "ID": 134,
+      "CODIGO": "38",
+      "ITEM": "035. CANTONEIRAS (VIGA L) EM ACO CARBONO"
+    },
+    {
+      "ID": 135,
+      "CODIGO": "38",
+      "ITEM": "040. CHAPA EM ACO CARBONO EM GERAL (LISA, XADRES...)"
+    },
+    {
+      "ID": 136,
+      "CODIGO": "38",
+      "ITEM": "045. CHAPA EM ACO INOX EM GERAL (LISA, XADRES...)"
+    },
+    {
+      "ID": 137,
+      "CODIGO": "38",
+      "ITEM": "050. CHAPA EM ALUMINIO EM GERAL (LISA, XADRES...)"
+    },
+    {
+      "ID": 138,
+      "CODIGO": "38",
+      "ITEM": "051. CHAPA EM OUTROS MATERIAIS (LISA, XADRES...)"
+    },
+    {
+      "ID": 139,
+      "CODIGO": "38",
+      "ITEM": "055. CONEXOES EM ACO CARBONO EM GERAL (TEE, CURVA, LUVAS, PESTANAS, ADAPTADORES, REDUCOES, NIPLES...)"
+    },
+    {
+      "ID": 140,
+      "CODIGO": "38",
+      "ITEM": "060. CONEXOES EM ACO INOX EM GERAL  (TEE, CURVA, LUVAS, PESTANAS, ADAPTADORES, REDUCOES, NIPLES...)"
+    },
+    {
+      "ID": 141,
+      "CODIGO": "38",
+      "ITEM": "065. CONEXOES EM ALUMINIO"
+    },
+    {
+      "ID": 142,
+      "CODIGO": "38",
+      "ITEM": "070. CONEXOES EM FERRO FUNDIDO, NODULAR"
+    },
+    {
+      "ID": 143,
+      "CODIGO": "38",
+      "ITEM": "075. CONEXOES EM OUTROS MATERIAIS"
+    },
+    {
+      "ID": 144,
+      "CODIGO": "38",
+      "ITEM": "080. FILTRO Y"
+    },
+    {
+      "ID": 145,
+      "CODIGO": "38",
+      "ITEM": "085. FLANGES EM ACO CARBONO (PESCOCO, CEGO, ENCAIXE SOLDA, SOLTO..) "
+    },
+    {
+      "ID": 146,
+      "CODIGO": "38",
+      "ITEM": "090. FLANGES EM ACO INOX (PESCOCO, CEGO, ENCAIXE SOLDA, SOLTO..) "
+    },
+    {
+      "ID": 147,
+      "CODIGO": "38",
+      "ITEM": "095. GASES (HELIO, ARGONIO, OXIGENIO, ACETILENO, FREON)"
+    },
+    {
+      "ID": 148,
+      "CODIGO": "38",
+      "ITEM": "100. JUNTAS EM PAPELAO, METALICAS E LENCOIS"
+    },
+    {
+      "ID": 149,
+      "CODIGO": "38",
+      "ITEM": "105. MATERIAIS  DE SOLDA (ELETRODOS, VARETAS, FLUIDOS P/SOLDA, ALICATES, SOLDA PRATA, ESTANHO...)"
+    },
+    {
+      "ID": 150,
+      "CODIGO": "38",
+      "ITEM": "110. MATERIAIS  ISOLAMENTO (TUBOS DE CILICATO DE CARCIO, FITAS E SELOS, EMULSAO ASFALTICA...)"
+    },
+    {
+      "ID": 151,
+      "CODIGO": "38",
+      "ITEM": "115. PURGADORES (TERMODINAMICOS, BALDE INVERTIDOS.....)"
+    },
+    {
+      "ID": 152,
+      "CODIGO": "38",
+      "ITEM": "120. TINTAS BICOMPONENTES, ZARCAOES, SOLVENTES"
+    },
+    {
+      "ID": 153,
+      "CODIGO": "38",
+      "ITEM": "125. TUBOS E CONEXOES EM PVC E ACESSORIOS"
+    },
+    {
+      "ID": 154,
+      "CODIGO": "38",
+      "ITEM": "130. TUBOS EM ACO CARBONO EM GERAL (CC, SC...)"
+    },
+    {
+      "ID": 155,
+      "CODIGO": "38",
+      "ITEM": "135. TUBOS EM ACO INOX EM GERAL (CC, SC...)"
+    },
+    {
+      "ID": 156,
+      "CODIGO": "38",
+      "ITEM": "140. TUBOS EM ALUMINIO"
+    },
+    {
+      "ID": 157,
+      "CODIGO": "38",
+      "ITEM": "145. TUBOS EM OUTROS MATERIAIS"
+    },
+    {
+      "ID": 158,
+      "CODIGO": "38",
+      "ITEM": "150. VALVULAS (ESFERA, GAVETA, GLOBO, RETENCAO, MACHO, GUILHOTINA, DIAFRAGMA...)"
+    },
+    {
+      "ID": 159,
+      "CODIGO": "38",
+      "ITEM": "155. VIGAS I, H, (W), T EM ACO CARBONO, INOX, ALUMINIO...)"
+    },
+    {
+      "ID": 160,
+      "CODIGO": "38",
+      "ITEM": "160. CANTONEIRAS (VIGA L) EM ACO INOX"
+    },
+    {
+      "ID": 161,
+      "CODIGO": "46",
+      "ITEM": "010. CABOS CONECTORES E ACESSORIOS"
+    },
+    {
+      "ID": 162,
+      "CODIGO": "46",
+      "ITEM": "015. EQUIPAMENTOS (MICROS, SERVIDORES, RACKS)"
+    },
+    {
+      "ID": 163,
+      "CODIGO": "46",
+      "ITEM": "020. EQUIPAMENTOS E ACESSORIOS P/REDES SEM FIO (WIRELESS - WI FI)"
+    },
+    {
+      "ID": 164,
+      "CODIGO": "46",
+      "ITEM": "025. PERIFERICOS (NO BREAK, IMPRESSORAS, TECLADOS, MOUSES)"
+    },
+    {
+      "ID": 165,
+      "CODIGO": "46",
+      "ITEM": "030. SOFTWARES (LICENCA DE USO)"
+    },
+    {
+      "ID": 166,
+      "CODIGO": "46",
+      "ITEM": "035. SOFTWARES PRATELEIRA"
+    },
+    {
+      "ID": 167,
+      "CODIGO": "46",
+      "ITEM": "040. SUPRIMENTOS (MIDIAS, TONER, TINTAS, FITAS, PAD..)"
+    },
+    {
+      "ID": 168,
+      "CODIGO": "50",
+      "ITEM": "010. CARTOES/PLACAS ELETRONICAS"
+    },
+    {
+      "ID": 169,
+      "CODIGO": "50",
+      "ITEM": "015. CHAVES DE NIVEIS"
+    },
+    {
+      "ID": 170,
+      "CODIGO": "50",
+      "ITEM": "020. CONEXOES E TUBINGS DE INSTRUMENTACAO"
+    },
+    {
+      "ID": 171,
+      "CODIGO": "50",
+      "ITEM": "025. CONTROLADORES LOGICOS PROGRAMAVEIS (PLC) E INDICADORES"
+    },
+    {
+      "ID": 172,
+      "CODIGO": "50",
+      "ITEM": "030. CONVERSORES"
+    },
+    {
+      "ID": 173,
+      "CODIGO": "50",
+      "ITEM": "035. ENCODERS"
+    },
+    {
+      "ID": 174,
+      "CODIGO": "50",
+      "ITEM": "040. FILTROS LUBRIFICADORES E ACESSORIOS"
+    },
+    {
+      "ID": 175,
+      "CODIGO": "50",
+      "ITEM": "045. INDICADORES"
+    },
+    {
+      "ID": 176,
+      "CODIGO": "50",
+      "ITEM": "050. MANOMETROS, MANOVACUOMETROS E ACESSORIOS"
+    },
+    {
+      "ID": 177,
+      "CODIGO": "50",
+      "ITEM": "055. MATERIAIS  ELETRONICOS (RESISTORES, TIRISTORES,  CAPACITORES, DIODOS.)"
+    },
+    {
+      "ID": 178,
+      "CODIGO": "50",
+      "ITEM": "060. POSICIONADORES E ATUADORES"
+    },
+    {
+      "ID": 179,
+      "CODIGO": "50",
+      "ITEM": "065. PRESSOSTATOS E TERMOSTATOS"
+    },
+    {
+      "ID": 180,
+      "CODIGO": "50",
+      "ITEM": "070. REGISTRADORES E TOTALIZADORES"
+    },
+    {
+      "ID": 181,
+      "CODIGO": "50",
+      "ITEM": "075. ROTAMETROS/VISORES DE FLUXO"
+    },
+    {
+      "ID": 182,
+      "CODIGO": "50",
+      "ITEM": "080. SENSORES (INDUTIVOS, POSICAO)"
+    },
+    {
+      "ID": 183,
+      "CODIGO": "50",
+      "ITEM": "085. SISTEMAS DE DETECCAO DE GASES (EQUIPAMENTOS,  ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 184,
+      "CODIGO": "50",
+      "ITEM": "090. SOLENOIDES E BOBINAS"
+    },
+    {
+      "ID": 185,
+      "CODIGO": "50",
+      "ITEM": "095. TERMOMETROS, TERMOPARES, TERMORESISTENCIAS"
+    },
+    {
+      "ID": 186,
+      "CODIGO": "50",
+      "ITEM": "100. TRANSMISSORES PRESSAO"
+    },
+    {
+      "ID": 187,
+      "CODIGO": "50",
+      "ITEM": "105. TRANSPONDER"
+    },
+    {
+      "ID": 188,
+      "CODIGO": "50",
+      "ITEM": "110. VALVULAS COMANDO"
+    },
+    {
+      "ID": 189,
+      "CODIGO": "50",
+      "ITEM": "115. VALVULAS CONTROLE"
+    },
+    {
+      "ID": 190,
+      "CODIGO": "50",
+      "ITEM": "120. VALVULAS E FILTROS REGULADORES DE PRESSAO"
+    },
+    {
+      "ID": 191,
+      "CODIGO": "50",
+      "ITEM": "125. VALVULAS SEGURANCA E DISCO RUPTURA"
+    },
+    {
+      "ID": 192,
+      "CODIGO": "54",
+      "ITEM": "010. ABRASIVOS (LIXA, REBOLOS, PONTAS MONTDAS, DISCO CORTE DESBASTE...)"
+    },
+    {
+      "ID": 193,
+      "CODIGO": "54",
+      "ITEM": "015. ACOPLAMENTOS E ACESSORIOS"
+    },
+    {
+      "ID": 194,
+      "CODIGO": "54",
+      "ITEM": "020. ADESIVOS E COLAS "
+    },
+    {
+      "ID": 195,
+      "CODIGO": "54",
+      "ITEM": "025. ANEIS (O) ORING"
+    },
+    {
+      "ID": 196,
+      "CODIGO": "54",
+      "ITEM": "030. ANEIS ELASTICOS, CONTRAPINOS (CUPILHAS), PINOS ELASTICOS, REBITES E GRAXEIRAS "
+    },
+    {
+      "ID": 197,
+      "CODIGO": "54",
+      "ITEM": "035. ARAMES"
+    },
+    {
+      "ID": 198,
+      "CODIGO": "54",
+      "ITEM": "040. ARRUELAS (LISA, PRESSAO, RECARTILHADAS, TRAVA)"
+    },
+    {
+      "ID": 199,
+      "CODIGO": "54",
+      "ITEM": "045. BARRAS ROSCADAS EM GERAL"
+    },
+    {
+      "ID": 200,
+      "CODIGO": "54",
+      "ITEM": "050. BROCAS, FRESA, MACHOS E COSSINETES"
+    },
+    {
+      "ID": 201,
+      "CODIGO": "54",
+      "ITEM": "055. BUCHA DE FIXACAO DE NYLON, E ACESSORIOS"
+    },
+    {
+      "ID": 202,
+      "CODIGO": "54",
+      "ITEM": "060. CABOS ACO E ACESSORIOS"
+    },
+    {
+      "ID": 203,
+      "CODIGO": "54",
+      "ITEM": "065. CALCOS "
+    },
+    {
+      "ID": 204,
+      "CODIGO": "54",
+      "ITEM": "070. CHUMBADORES EM GERAL"
+    },
+    {
+      "ID": 205,
+      "CODIGO": "54",
+      "ITEM": "075. CORDAS E CORDOES"
+    },
+    {
+      "ID": 206,
+      "CODIGO": "54",
+      "ITEM": "080. CORREIAS (V, PLANA, TRANSPORTADORAS...)"
+    },
+    {
+      "ID": 207,
+      "CODIGO": "54",
+      "ITEM": "085. CORRENTES ROLO E ACESSORIOS (SIMPLES, DUPLA, TRIPLA, EMENDAS)"
+    },
+    {
+      "ID": 208,
+      "CODIGO": "54",
+      "ITEM": "090. ESCOVAS, VASSOURAS E ACESSORIOS"
+    },
+    {
+      "ID": 209,
+      "CODIGO": "54",
+      "ITEM": "090. ESCOVAS, VASSOURAS E ACESSORIOS"
+    },
+    {
+      "ID": 210,
+      "CODIGO": "54",
+      "ITEM": "095. FERRAGENS (FECHADURAS, CADEADOS, TRINCOS, DOBRADICAS, PREGOS...)"
+    },
+    {
+      "ID": 211,
+      "CODIGO": "54",
+      "ITEM": "100. FERRAMENTAS DE MAO (CHAVES COMBINADA, BOCA, FENDA, ALICATES, INSTRUMENTOS MEDICAO)"
+    },
+    {
+      "ID": 212,
+      "CODIGO": "54",
+      "ITEM": "105. FERRAMENTAS ELETROELETRONICAS"
+    },
+    {
+      "ID": 213,
+      "CODIGO": "54",
+      "ITEM": "110. FERRAMENTAS PNEUMATICAS"
+    },
+    {
+      "ID": 214,
+      "CODIGO": "54",
+      "ITEM": "115. FILTROS E TELAS"
+    },
+    {
+      "ID": 215,
+      "CODIGO": "54",
+      "ITEM": "120. GAXETAS E ANEIS RASPADORES"
+    },
+    {
+      "ID": 216,
+      "CODIGO": "54",
+      "ITEM": "125. GAXETAS TRANCADAS E VEDACAO"
+    },
+    {
+      "ID": 217,
+      "CODIGO": "54",
+      "ITEM": "130. LAMINAS SERRA (MANUAL,MAQUINA, FITA)"
+    },
+    {
+      "ID": 218,
+      "CODIGO": "54",
+      "ITEM": "135. LIMAS (CHATAS, TRIANGULARES, BASTARDA, MURSA)"
+    },
+    {
+      "ID": 219,
+      "CODIGO": "54",
+      "ITEM": "140. LONAS (VINILICAS, ENCERADAS)"
+    },
+    {
+      "ID": 220,
+      "CODIGO": "54",
+      "ITEM": "145. MANGUEIRAS E ACESSORIOS (MANGUEIRA, ABRACADEIRA, ENGATES RAPIDOS)"
+    },
+    {
+      "ID": 221,
+      "CODIGO": "54",
+      "ITEM": "150. MATERIAL DE ICAMENTO E MOVIMENTACAO DE CARGAS (CABO DE ACO, CINTA, MANILHA...)"
+    },
+    {
+      "ID": 222,
+      "CODIGO": "54",
+      "ITEM": "155. MOLAS, FECHO MOLAS"
+    },
+    {
+      "ID": 223,
+      "CODIGO": "54",
+      "ITEM": "160. PALHA DE ACO"
+    },
+    {
+      "ID": 224,
+      "CODIGO": "54",
+      "ITEM": "165. PARAFUSOS EM GERAL (SEXTAVADOS, CABECA CILINDRICA SEXTAVADO INTERNO, AUTOATARRAXANTES, FRANCES (MADEIRA)..."
+    },
+    {
+      "ID": 225,
+      "CODIGO": "54",
+      "ITEM": "170. PNEUS, CAMERAS E ACESSORIOS"
+    },
+    {
+      "ID": 226,
+      "CODIGO": "54",
+      "ITEM": "175. PORCAS (SEXTAVADA, CASTELO, AUTOTRAVANTE...)"
+    },
+    {
+      "ID": 227,
+      "CODIGO": "54",
+      "ITEM": "180. RETENTORES"
+    },
+    {
+      "ID": 228,
+      "CODIGO": "54",
+      "ITEM": "185. RODIZIOS E ACESSORIOS"
+    },
+    {
+      "ID": 229,
+      "CODIGO": "54",
+      "ITEM": "190. ROLAMENTOS, MANCAIS E ACESSORIOS"
+    },
+    {
+      "ID": 230,
+      "CODIGO": "54",
+      "ITEM": "195. SABAO INDUSTRIAL , DETERGENTES (PASTA, LIQUIDO...)"
+    },
+    {
+      "ID": 231,
+      "CODIGO": "54",
+      "ITEM": "200. SELOS MECANICOS"
+    },
+    {
+      "ID": 232,
+      "CODIGO": "54",
+      "ITEM": "205. TRAPOS,  ESTOPA E TOALHAS INDUSTRIAIS"
+    },
+    {
+      "ID": 233,
+      "CODIGO": "54",
+      "ITEM": "210. VEDANTES (MASSA CALETEFETAR, SILASTIC...)"
+    },
+    {
+      "ID": 234,
+      "CODIGO": "58",
+      "ITEM": "025. BALANCA ANALOGICAS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 235,
+      "CODIGO": "58",
+      "ITEM": "030. BALANCA CONTAINER (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 236,
+      "CODIGO": "58",
+      "ITEM": "035. BALANCA RODOVIARIA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 237,
+      "CODIGO": "58",
+      "ITEM": "040. BALANCAS ELETRONICAS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 238,
+      "CODIGO": "58",
+      "ITEM": "055. BOMBA CENTRIFUGA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 239,
+      "CODIGO": "58",
+      "ITEM": "060. BOMBA DOSADORA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 240,
+      "CODIGO": "58",
+      "ITEM": "065. BOMBAS DE ENGRANGEM (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 241,
+      "CODIGO": "58",
+      "ITEM": "070. BOMBAS DE LASTRO (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 242,
+      "CODIGO": "58",
+      "ITEM": "075. BOMBAS SAPO (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 243,
+      "CODIGO": "58",
+      "ITEM": "130. CALDEIRA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES"
+    },
+    {
+      "ID": 244,
+      "CODIGO": "58",
+      "ITEM": "145. CARRETAS PRANCHAS"
+    },
+    {
+      "ID": 245,
+      "CODIGO": "58",
+      "ITEM": "155. CILINDROS HIDRAULICOS E ACESSORIOS "
+    },
+    {
+      "ID": 246,
+      "CODIGO": "58",
+      "ITEM": "165. CILINDROS PNEUMATICOS E ACESSORIOS"
+    },
+    {
+      "ID": 247,
+      "CODIGO": "58",
+      "ITEM": "175. COMPRESSORES E SOPRADORES (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 248,
+      "CODIGO": "58",
+      "ITEM": "180. EMPILHADEIRA GAS/GLP, ELETRICAS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 249,
+      "CODIGO": "58",
+      "ITEM": "185. EXAUSTORES (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 250,
+      "CODIGO": "58",
+      "ITEM": "190. FRESAS E TORNOS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 251,
+      "CODIGO": "58",
+      "ITEM": "195. GUINDASTE PARA CONTAINER ESTACIONARIOS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 252,
+      "CODIGO": "58",
+      "ITEM": "200. GUINDASTE PARA CONTAINERS SOBRE RODAS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 253,
+      "CODIGO": "58",
+      "ITEM": "225. MOTOR COMBUSTAO INTERNA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 254,
+      "CODIGO": "58",
+      "ITEM": "230. MOTOR COMBUSTAO PRINCIPAL - MAN - ALEMANHA  (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES) "
+    },
+    {
+      "ID": 255,
+      "CODIGO": "58",
+      "ITEM": "235. MOTOR COMBUSTAO PRINCIPAL - MAN - DINAMARCA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES) "
+    },
+    {
+      "ID": 256,
+      "CODIGO": "58",
+      "ITEM": "240. MOTOR COMBUSTAO PRINCIPAL - WARTSILA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES) "
+    },
+    {
+      "ID": 257,
+      "CODIGO": "58",
+      "ITEM": "245. MOTOR DE POPA (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 258,
+      "CODIGO": "58",
+      "ITEM": "250. PRENSAS HIDRAULICAS E MANUAIS "
+    },
+    {
+      "ID": 259,
+      "CODIGO": "58",
+      "ITEM": "255. REDUTORES, MOTO REDUTORES"
+    },
+    {
+      "ID": 260,
+      "CODIGO": "58",
+      "ITEM": "260. SISTEMAS DE CARREGAMENTO DE NAVIOS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 261,
+      "CODIGO": "58",
+      "ITEM": "265. TALHAS E PONTES ROLANTES (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 262,
+      "CODIGO": "58",
+      "ITEM": "270. TORRE REFRIGERACAO (RESFRIAMENTO) (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 263,
+      "CODIGO": "58",
+      "ITEM": "275. TRANSPALETEIRAS (CARRINHOS HIDRAULICOS) (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 264,
+      "CODIGO": "58",
+      "ITEM": "280. TROCADORES DE CALOR"
+    },
+    {
+      "ID": 265,
+      "CODIGO": "58",
+      "ITEM": "285. TURBINAS A GAS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 266,
+      "CODIGO": "58",
+      "ITEM": "290. VANS (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 267,
+      "CODIGO": "58",
+      "ITEM": "295. VEICULOS PASSEIO (EQUIPAMENTOS, ACESSORIOS E SOBRESSALENTES)"
+    },
+    {
+      "ID": 268,
+      "CODIGO": "62",
+      "ITEM": "010. MATERIAIS COMBATE INCENDIO (MANGUEIRAS, HIDRANTES, REGISTROS, VALVULAS, CHAVES...)"
+    },
+    {
+      "ID": 269,
+      "CODIGO": "62",
+      "ITEM": "015. MATERIAIS SINALIZACAO (PARE, LIMITE VELOCIDADE, SIMBOLOGIA NAVAL INTERNACIONAL...)"
+    },
+    {
+      "ID": 270,
+      "CODIGO": "62",
+      "ITEM": "020. SEGURANCA EPI/EPC (CALCADOS, MASCARAS, CAPACETES, AVENTAL, OCULOS, LUVAS, PROTETORES E FILTROS..)"
+    },
+    {
+      "ID": 271,
+      "CODIGO": "62",
+      "ITEM": "025. UNIFORMES EM GERAL"
+    },
+    {
+      "ID": 272,
+      "CODIGO": "66",
+      "ITEM": "010. AR CONDICIONADO (CENTRAL DE AR CONDICIONADO, DE JANELA, SPLITS)"
+    },
+    {
+      "ID": 273,
+      "CODIGO": "66",
+      "ITEM": "015. ARMARIOS, ESTACOES DE TRABALHO, GAVETEIROS E MESAS"
+    },
+    {
+      "ID": 274,
+      "CODIGO": "66",
+      "ITEM": "020. CADEIRAS E SOFAS"
+    },
+    {
+      "ID": 275,
+      "CODIGO": "66",
+      "ITEM": "025. CAMAS, ROUPAS DE CAMAS E GUARDA-ROUPAS"
+    },
+    {
+      "ID": 276,
+      "CODIGO": "66",
+      "ITEM": "030. EQUIPAMENTOS DE COPA/COZINHA (GELADEIRA, FREEZER, FOGAO,BEBEDOUROS, ELETRODOMESTICOS EM GERAL, ...)"
+    },
+    {
+      "ID": 277,
+      "CODIGO": "66",
+      "ITEM": "035. MAQUINA DE LAVAR ROUPA E SECAR ROUPAS"
+    },
+    {
+      "ID": 278,
+      "CODIGO": "66",
+      "ITEM": "040. VIDEO, FOTO E SOM (CAMERAS, APARELHOS DE SOM, TELEVISOES (CONVENCIONAIS, PLASMA, LCD, LED, 3G))"
+    },
+    {
+      "ID": 279,
+      "CODIGO": "66",
+      "ITEM": "045. UTENSILIOS DECORATIVOS"
+    },
+    {
+      "ID": 280,
+      "CODIGO": "70",
+      "ITEM": "010. CERAS SINTETICAS"
+    },
+    {
+      "ID": 281,
+      "CODIGO": "70",
+      "ITEM": "015. GRAXAS"
+    },
+    {
+      "ID": 282,
+      "CODIGO": "70",
+      "ITEM": "020. OLEOS HIDRAULICOS"
+    },
+    {
+      "ID": 283,
+      "CODIGO": "70",
+      "ITEM": "025. OLEOS LUBRIFICANTES"
+    },
+    {
+      "ID": 284,
+      "CODIGO": "70",
+      "ITEM": "030. OLEOS TROCA TERMICA"
+    },
+    {
+      "ID": 285,
+      "CODIGO": "74",
+      "ITEM": "010. ABSORVENTE DE OLEO (MEPOXABE)"
+    },
+    {
+      "ID": 286,
+      "CODIGO": "74",
+      "ITEM": "015. INSETICIDAS, REPELENTES"
+    },
+    {
+      "ID": 287,
+      "CODIGO": "74",
+      "ITEM": "020. MATERIAL P/TRATAMENTO AGUA DE CALDEIRA"
+    },
+    {
+      "ID": 288,
+      "CODIGO": "74",
+      "ITEM": "025. MATERIAL P/TRATAMENTO AGUA DE LASTRO"
+    },
+    {
+      "ID": 289,
+      "CODIGO": "74",
+      "ITEM": "030. MATERIAL P/TRATAMENTO AGUA DE MOTORES"
+    },
+    {
+      "ID": 290,
+      "CODIGO": "74",
+      "ITEM": "035. MATERIAL P/TRATAMENTO EFLUENTES"
+    },
+    {
+      "ID": 291,
+      "CODIGO": "74",
+      "ITEM": "040. MATERIAL QUIMICO DE MANUTENÇÃO (LIMPEZA INDUSTRIAL, DISPERSOR DE OLEO...)"
+    },
+    {
+      "ID": 292,
+      "CODIGO": "74",
+      "ITEM": "045. SILICA"
+    },
+    {
+      "ID": 293,
+      "CODIGO": "74",
+      "ITEM": "050. VASELINA"
+    },
+    {
+      "ID": 294,
+      "CODIGO": "78",
+      "ITEM": "010. APARAS DE PAPEL E PAPELAO"
+    },
+    {
+      "ID": 295,
+      "CODIGO": "78",
+      "ITEM": "015. MATERIAIS FERROSOS (SUCATA ACO CARBONO, ACO INOX, LIMALHAS...)"
+    },
+    {
+      "ID": 296,
+      "CODIGO": "78",
+      "ITEM": "020. MATERIAIS NAO FERROSOS (BRONZE, LATAO, COBRE)"
+    },
+    {
+      "ID": 297,
+      "CODIGO": "78",
+      "ITEM": "025. OLEOS E GRAXAS"
+    },
+    {
+      "ID": 298,
+      "CODIGO": "78",
+      "ITEM": "030. RESIDUOS ORGANICOS"
+    },
+    {
+      "ID": 299,
+      "CODIGO": "78",
+      "ITEM": "035. SUCATAS (CAIXAS, MADEIRAS DIVERSAS, EPI/EPC, UNIFORMES...)"
+    },
+    {
+      "ID": 300,
+      "CODIGO": "97",
+      "ITEM": "010. AUXILIO FUNERAL"
+    },
+    {
+      "ID": 301,
+      "CODIGO": "97",
+      "ITEM": "015. CONVENIOS (FARMACIA, LOJAS...)"
+    },
+    {
+      "ID": 302,
+      "CODIGO": "97",
+      "ITEM": "020. PLANOS DE SAUDE  HOSPITALAR"
+    },
+    {
+      "ID": 303,
+      "CODIGO": "97",
+      "ITEM": "025. PLANOS ODONTOLOGICOS"
+    },
+    {
+      "ID": 304,
+      "CODIGO": "97",
+      "ITEM": "030. REEMBOLSO EDUCACIONAL EM GERAL"
+    },
+    {
+      "ID": 305,
+      "CODIGO": "97",
+      "ITEM": "035. REFEITORIO"
+    },
+    {
+      "ID": 306,
+      "CODIGO": "97",
+      "ITEM": "040. SEGURO DE VIDA EM GRUPO"
+    },
+    {
+      "ID": 307,
+      "CODIGO": "97",
+      "ITEM": "045. TRANSPORTE (DESLOCAMENTO)"
+    },
+    {
+      "ID": 308,
+      "CODIGO": "97",
+      "ITEM": "050. VALE ALIMENTACAO"
+    },
+    {
+      "ID": 309,
+      "CODIGO": "97",
+      "ITEM": "055. VALE REFEICAO"
+    },
+    {
+      "ID": 310,
+      "CODIGO": "98",
+      "ITEM": "010. AFRETAMENTO NAVIOS"
+    },
+    {
+      "ID": 311,
+      "CODIGO": "98",
+      "ITEM": "015. COMBUSTIVEL (ETANOL, GASOLINA, OLEO DIESEL)"
+    },
+    {
+      "ID": 312,
+      "CODIGO": "98",
+      "ITEM": "020. CONDOMINIOS, IMPOSTOS, TARIFAS E TAXAS "
+    },
+    {
+      "ID": 313,
+      "CODIGO": "98",
+      "ITEM": "025. COMISSOES"
+    },
+    {
+      "ID": 314,
+      "CODIGO": "98",
+      "ITEM": "030. DESPESAS DE VENDAS"
+    },
+    {
+      "ID": 315,
+      "CODIGO": "98",
+      "ITEM": "035. ENTIDADES BENEFICENTES"
+    },
+    {
+      "ID": 316,
+      "CODIGO": "98",
+      "ITEM": "040. FUNDACOES"
+    },
+    {
+      "ID": 317,
+      "CODIGO": "98",
+      "ITEM": "045. LOCACAO CONTAINER"
+    },
+    {
+      "ID": 318,
+      "CODIGO": "98",
+      "ITEM": "050. LOCACAO IMOVEL"
+    },
+    {
+      "ID": 319,
+      "CODIGO": "98",
+      "ITEM": "055. LOCACAO MAQUINAS E EQUIPAMENTOS"
+    },
+    {
+      "ID": 320,
+      "CODIGO": "98",
+      "ITEM": "060. LOCACAO VEICULOS, CARRETAS E CAVALOS MECANICOS"
+    },
+    {
+      "ID": 321,
+      "CODIGO": "98",
+      "ITEM": "065. ONG'S"
+    },
+    {
+      "ID": 322,
+      "CODIGO": "98",
+      "ITEM": "070. UTILIDADES (AGUA, ENERGIA ELETRICA, ESGOTO, GAS...)"
+    },
+    {
+      "ID": 323,
+      "CODIGO": "98",
+      "ITEM": "075. DESPESA ALIMENTACAO"
+    },
+    {
+      "ID": 324,
+      "CODIGO": "98",
+      "ITEM": "080. LOCACAO MOVEIS"
+    },
+    {
+      "ID": 325,
+      "CODIGO": "98",
+      "ITEM": "085. DESPESA HOSPEDAGEM"
+    },
+    {
+      "ID": 326,
+      "CODIGO": "98",
+      "ITEM": "090. LOCACAO EQUIPAMENTOS ESPORTIVOS"
+    },
+    {
+      "ID": 327,
+      "CODIGO": "98",
+      "ITEM": "095. MOVIMENTACAO VEICULOS, MAQUINAS E EQUIPAMENTOS"
+    },
+    {
+      "ID": 328,
+      "CODIGO": "99",
+      "ITEM": "010. SERVICOS PARA FEIRAS E EVENTOS"
+    },
+    {
+      "ID": 329,
+      "CODIGO": "99",
+      "ITEM": "015. SERVICOS ADVOCATICIOS (JURIDICOS)"
+    },
+    {
+      "ID": 330,
+      "CODIGO": "99",
+      "ITEM": "020. SERVICOS AGENCIA DE VIAGEM"
+    },
+    {
+      "ID": 331,
+      "CODIGO": "99",
+      "ITEM": "025. SERVICOS ANALISES (QUIMICAS, FISICAS)"
+    },
+    {
+      "ID": 332,
+      "CODIGO": "99",
+      "ITEM": "030. SERVICOS APOIO PORTUARIO (AGENCIAMENTO, REBOCADOR, LANCHA,...)"
+    },
+    {
+      "ID": 333,
+      "CODIGO": "99",
+      "ITEM": "035. SERVICOS ASSESSORIA"
+    },
+    {
+      "ID": 334,
+      "CODIGO": "99",
+      "ITEM": "040. SERVICOS CONSTRUCAO CIVIL"
+    },
+    {
+      "ID": 335,
+      "CODIGO": "99",
+      "ITEM": "045. SERVICOS CONSULTORIA"
+    },
+    {
+      "ID": 336,
+      "CODIGO": "99",
+      "ITEM": "050. SERVICOS CORRETAGEM"
+    },
+    {
+      "ID": 337,
+      "CODIGO": "99",
+      "ITEM": "055. SERVICOS DE DEPOT"
+    },
+    {
+      "ID": 338,
+      "CODIGO": "99",
+      "ITEM": "060. SERVICOS DE SSMA"
+    },
+    {
+      "ID": 339,
+      "CODIGO": "99",
+      "ITEM": "065. SERVICOS DE TECNOLOGIA DA INFORMACAO"
+    },
+    {
+      "ID": 340,
+      "CODIGO": "99",
+      "ITEM": "070. SERVICOS DESPACHOS ADUANEIROS"
+    },
+    {
+      "ID": 341,
+      "CODIGO": "99",
+      "ITEM": "075. SERVICOS ENGENHARIA E ARQUITETURA (PROJETOS)"
+    },
+    {
+      "ID": 342,
+      "CODIGO": "99",
+      "ITEM": "080. SERVICOS GEOLOGICOS E TOPOGRAFICOS"
+    },
+    {
+      "ID": 343,
+      "CODIGO": "99",
+      "ITEM": "085. SERVICOS MANUTENCAO EQUIPAMENTOS"
+    },
+    {
+      "ID": 344,
+      "CODIGO": "99",
+      "ITEM": "090. SERVICOS MANUTENCAO NAVAL"
+    },
+    {
+      "ID": 345,
+      "CODIGO": "99",
+      "ITEM": "095. SERVICOS MANUTENCAO PREDIAL"
+    },
+    {
+      "ID": 346,
+      "CODIGO": "99",
+      "ITEM": "100. SERVICOS MARKETING (GRAFICOS, BANNERS, FOLDERS...)"
+    },
+    {
+      "ID": 347,
+      "CODIGO": "99",
+      "ITEM": "105. SERVICOS NOTORIAIS/CARTORIO (RECONHECIMENTO, PROTESTOS, ESCRITURAS, OUTORGAS)"
+    },
+    {
+      "ID": 348,
+      "CODIGO": "99",
+      "ITEM": "120. SERVICOS PRATICAGEM"
+    },
+    {
+      "ID": 349,
+      "CODIGO": "99",
+      "ITEM": "125. SERVICOS REPARO DE CONTAINERS"
+    },
+    {
+      "ID": 350,
+      "CODIGO": "99",
+      "ITEM": "130. SERVICOS SEGURANCA PATRIMONIAL"
+    },
+    {
+      "ID": 351,
+      "CODIGO": "99",
+      "ITEM": "135. SERVICOS SEGURO"
+    },
+    {
+      "ID": 352,
+      "CODIGO": "99",
+      "ITEM": "140. SERVICOS TELECOMUNICACOES (TELEFONIA FIXO, MOVEL, RADIO, TRANSMISSÃO DE DADOS E TV A CABO)"
+    },
+    {
+      "ID": 353,
+      "CODIGO": "99",
+      "ITEM": "145. SERVICOS TERCEIRIZADOS (LIMPEZA, RECEPCAO, MENSAGERIA, ...)"
+    },
+    {
+      "ID": 354,
+      "CODIGO": "99",
+      "ITEM": "150. SERVICOS TRANSPORTES"
+    },
+    {
+      "ID": 355,
+      "CODIGO": "99",
+      "ITEM": "155. SERVICOS DE RECURSOS HUMANOS"
+    },
+    {
+      "ID": 356,
+      "CODIGO": "99",
+      "ITEM": "160. SERVICO INSPECAO"
+    },
+    {
+      "ID": 357,
+      "CODIGO": "99",
+      "ITEM": "165. SERVICOS DE PESAGEM"
+    },
+    {
+      "ID": 358,
+      "CODIGO": "99",
+      "ITEM": "170. SERVICO DE ENSAIO"
+    },
+    {
+      "ID": 359,
+      "CODIGO": "99",
+      "ITEM": "175. SERVICO RECICLAGEM"
+    },
+    {
+      "ID": 360,
+      "CODIGO": "99",
+      "ITEM": "180. SERVICOS MOBILIZACAO E DESMOBILIZACAO"
+    },
+    {
+      "ID": 361,
+      "CODIGO": "42",
+      "ITEM": "030. EQUIPAMENTOS DE LIMPEZA"
+    },
+    {
+      "ID": 362,
+      "CODIGO": "02",
+      "ITEM": "010. ABSORVENTES HIGIENICOS FEMININOS"
+    }
+  ],
+  "MODALIDADE": [
+    {
+      "ID": 0,
+      "ITEM": "1. USO E CONSUMO"
+    },
+    {
+      "ID": 1,
+      "ITEM": "2. ATIVO IMOBILIZADO"
+    },
+    {
+      "ID": 2,
+      "ITEM": "3. SERVICO"
+    },
+    {
+      "ID": 3,
+      "ITEM": "4. PRESTACAO SERVICOS"
+    },
+    {
+      "ID": 4,
+      "ITEM": "5. OUTROS"
+    }
+  ]
+}
