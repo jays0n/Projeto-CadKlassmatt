@@ -12,7 +12,7 @@ II. The Excel Sheet model of record data to input is available in documetation (
 III. There is a available Executable in Google Drive according the Link bellow:
               https://drive.google.com/drive/folders/1mbfm4TqaNV_pIqYJ3vS2IG7emtJXgyLr?usp=sharing
 
-IV. It is possible that user's browser version is not supported for the application standard driver, it would start a alert. To solve this kind of problem, the user must download a compatible WebDriver according his/her browser (Chrome, Mozila, Ie and/or Edge), and replace the executable file in the path: '...\Module\__xbase__\__files__\__drives__'.
+IV. It is possible that user's browser version is not supported for the application standard driver, it would start a alert. To solve this kind of problem, the user must download a compatible WebDriver according his/her browser (Chrome, Mozila, Ie and/or Edge), and replace the executable file in the path: ".../Module/__xbase__/__files__/__drives__".
 
 For mor Informations contact:
 
