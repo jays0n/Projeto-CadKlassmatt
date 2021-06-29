@@ -5,7 +5,10 @@ The main point is based on Python libraries tha has a common use on automation t
 
 Note: 
 I. If a user receive the Klassmatt registration request from his/her e-mail, it is strongly recommended create a Inbox aimed to receive those sort of requests named Klassmatt.
+
 II. The Excel Sheet model of record data to input is available in documetation (It was named STANDARD_SHEET.xlsx).
+
 III. There is a available Executable in Google Drive according the Link bellow:
               https://drive.google.com/drive/folders/1mbfm4TqaNV_pIqYJ3vS2IG7emtJXgyLr?usp=sharing
+
 IV. It is possible that user's browser version is not supported for the application standard driver, it would start a alert. To solve this kind of problem, the user must dowload a compatible WebDriver according his/her browser (Chrome, Mozila, Ie and/or Edge), and replace the executable file in the path: '...\Module\__xbase__\__files__\__drives__'.
