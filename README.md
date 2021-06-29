@@ -3,7 +3,8 @@ This Project was created to automate the whole task involved on register itens i
 
 The main point is based on Python libraries tha has a common use on automation tasks on web, Selenium Web Driver Package. It was developed a interactive graphic user interface (GUI) to register your itens and follow the sins (Klassmatt Identifiers numbers) that has been created by the user, also there is a mechanism that a user may send e-mails automatically with all records that was approved and those ones was recorded, throught his/her e-mail account on Oultlook App.
 
-Note: 
+Note:
+
 I. If a user receive the Klassmatt registration request from his/her e-mail, it is strongly recommended create a Inbox aimed to receive those sort of requests named Klassmatt.
 
 II. The Excel Sheet model of record data to input is available in documetation (It was named STANDARD_SHEET.xlsx).
