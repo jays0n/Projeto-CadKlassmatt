@@ -5,7 +5,7 @@ The main point is based on Python libraries tha has a common use on automation t
 
 Note:
 
-I. If a user receive the Klassmatt registration request from his/her e-mail, it is strongly recommended create a Inbox aimed to receive those sort of requests named Klassmatt.
+I. If a user receive the Klassmatt registration request from his/her e-mail, it is strongly recommended create a Inbox named Klassmatt aimed to receive those sort of requests.
 
 II. The Excel Sheet model of record data to input is available in documetation (It was named STANDARD_SHEET.xlsx).
 
