@@ -1,5 +1,5 @@
 # Projeto-CadKlassmatt
-This Project was created to automate the whole task involved on register itens in web, through Klassmatt web site.
+This Project was created to automate the whole task involved on record itens in web, through Klassmatt web site. The main purpose is record a huge amount of data in Klassmatt Web Site automatically. The program may be use in any windows/Mac machine without any installation (Just enable use through System Firewall Control) for all users in a company.
 
 The main point is based on Python libraries tha has a common use on automation tasks on web, Selenium Web Driver Package. It was developed a interactive graphic user interface (GUI) through the PyQT5 library to register your itens and follow the sins (Klassmatt Identifiers numbers) that has been created by the user, also there is a mechanism that a user may send e-mails automatically with all records that was approved and those ones was recorded by him/her, through his/her e-mail account on Oultlook App.
 
